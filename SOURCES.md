@@ -2,10 +2,7 @@
 
 Stand: 28. August 2026. Diese Übersicht ist keine Rechtsberatung.
 
-Das Projekt veröffentlicht ausschließlich öffentlich erreichbare Messwerte,
-Datumsangaben und knapp paraphrasierte Tatsachen. Fremde PDFs, Bilder, Audio-,
-Video- oder vollständige Artikelinhalte werden nicht weiterveröffentlicht.
-Jeder Messwert und Chronikeintrag verweist auf seine Originalquelle.
+Das Projekt veröffentlicht ausschließlich öffentlich erreichbare Messwerte, Datumsangaben und knapp paraphrasierte Tatsachen. Fremde PDFs, Bilder, Audio-, Video- oder vollständige Artikelinhalte werden nicht weiterveröffentlicht. Jeder Messwert und Chronikeintrag verweist auf eine geprüfte Quelle; wenn die Primärquelle nicht mehr öffentlich erreichbar ist, wird die bestmögliche verifizierbare Sekundärquelle kenntlich gemacht.
 
 Einzelne Zahlen und Tatsachen sind regelmäßig nicht als persönliche geistige
 Schöpfung geschützt. Texte, Bilder, Gestaltung und Datenbanken können dagegen
@@ -34,8 +31,7 @@ fehlenden Schutzes einzelner Messwerte erlaubnispflichtig sein.
   Quellen in das Repository übernehmen.
 - Aussagen paraphrasieren; wörtliche Zitate nur kurz, eindeutig gekennzeichnet
   und mit konkretem Beleg verwenden.
-- Neue Datenpunkte nur aus der geöffneten Originalquelle übernehmen, nicht aus
-  Suchergebnis-Zusammenfassungen.
+- Neue Datenpunkte nur aus einer geöffneten, verifizierten Quelle übernehmen; Primärquellen bevorzugen und Sekundärquellen kennzeichnen. Suchergebnis-Zusammenfassungen reichen nicht als Beleg.
 - Bei jeder Zeile Datum, Quelle und Status als amtlicher oder berichteter Wert
   erhalten.
 - Inhalte aus dem Internet Archive genauso behandeln wie die ursprüngliche

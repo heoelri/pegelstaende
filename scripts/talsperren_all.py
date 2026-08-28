@@ -13,6 +13,12 @@ DATA = ROOT / "data"
 CACHE = ROOT / ".cache" / "cache"; CACHE.mkdir(parents=True, exist_ok=True)
 BASE = ("https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/"
         "wasserwirtschaft-und-gewaesserschutz/talsperren/talsperrenfuellstaende-")
+ORPHAN_PDFS = {
+    "https://www.bra.nrw.de/system/files/media/document/file/2025-08-15_talsperrenfuellstaende.pdf",
+    "https://www.bra.nrw.de/system/files/media/document/file/2025-09-01_talsperrenfuellstaende.pdf",
+    "https://www.bra.nrw.de/system/files/media/document/file/2025-09-15_talsperrenfuellstaende.pdf",
+    "https://www.bra.nrw.de/system/files/media/document/file/2025-10-01_talsperrenfuellstaende.pdf",
+}
 
 
 def get(url, tries=4, sleep=3):
@@ -125,6 +131,8 @@ def main():
     sp, sp_src = sammelseite()
     for p in sp:
         urls[p] = sp_src
+    for p in ORPHAN_PDFS:
+        urls[p] = p
     for y in range(2005, 2027):
         pdfs, src = index_pdfs(y)
         for p in pdfs:

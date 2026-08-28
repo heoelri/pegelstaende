@@ -28,7 +28,10 @@ main{padding:22px 28px 60px;max-width:1500px;margin:0 auto}
 .card .sub{margin:0 0 16px;color:var(--muted);font-size:12.5px}
 .grid{display:grid;gap:20px}
 @media(min-width:1100px){.grid.two{grid-template-columns:1fr 1fr}}
-.kpis{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-bottom:20px}
+.kpis{display:grid;gap:14px;margin-bottom:20px}
+.kpi-row{display:grid;gap:14px;grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:900px){.kpi-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:500px){.kpi-row{grid-template-columns:1fr}}
 .kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
 .kpi .lbl{color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.6px}
 .kpi .val{font-size:26px;font-weight:660;margin-top:4px;font-variant-numeric:tabular-nums}
@@ -89,11 +92,8 @@ footer li{margin-bottom:5px}
 
 <header>
   <h1>Pegelstände der Obernau- und Breitenbachtalsperre</h1>
-  <p>Kreis Siegen-Wittgenstein · Wasserverband Siegen-Wittgenstein (WVS). Amtliche Füllstands­zeitreihe
-     der Bezirksregierung Arnsberg (Dezernat 54 Wasserwirtschaft) kombiniert mit einer
-     Sentiment-Auswertung der regionalen Berichterstattung. Alle Datenpunkte sind mit Quelle verlinkt.</p>
-  <p class="disclaimer"><strong>Inoffizielle, unabhängige Auswertung:</strong> Dieses Angebot ist weder vom WVS noch von
-     einer Behörde beauftragt oder betrieben und verwendet ausschließlich öffentlich zugängliche Daten.</p>
+  <p>Kreis Siegen-Wittgenstein · Wasserverband Siegen-Wittgenstein (WVS). Amtliche Füllstands­zeitreihe der Bezirksregierung Arnsberg (Dezernat 54 Wasserwirtschaft) kombiniert mit einer Sentiment-Auswertung der regionalen Berichterstattung. Alle Datenpunkte sind mit Quelle verlinkt.</p>
+  <p class="disclaimer"><strong>Inoffizielle, unabhängige Auswertung:</strong> Dieses Angebot ist weder vom WVS noch von einer Behörde beauftragt oder betrieben und verwendet ausschließlich öffentlich zugängliche Daten.</p>
 </header>
 
 <main>
@@ -203,7 +203,7 @@ footer li{margin-bottom:5px}
 
   <section class="card">
     <h2>Messwerte (gefilterte Rohdaten)</h2>
-    <p class="sub">Amtliche 14-tägige Stichtagswerte. <span id="rowinfo"></span></p>
+    <p class="sub">Amtliche Stichtagswerte und ergänzende Pressewerte. <span id="rowinfo"></span></p>
     <div class="scroll">
       <table>
         <thead><tr><th>Stichtag</th><th>Talsperre</th><th class="num">Inhalt Mio. m³</th>
@@ -217,9 +217,7 @@ footer li{margin-bottom:5px}
 <footer>
   <h3>Quellen und Methodik</h3>
   <ul>
-    <li><strong>Status:</strong> Dies ist eine inoffizielle, unabhängige Zusammenstellung ohne
-      Verbindung zum WVS oder zu den genannten Behörden. Verarbeitet werden ausschließlich öffentlich
-      zugängliche Veröffentlichungen; maßgeblich bleiben immer die verlinkten Originalquellen.</li>
+    <li><strong>Status:</strong> Dies ist eine inoffizielle, unabhängige Zusammenstellung ohne Verbindung zum WVS oder zu den genannten Behörden. Verarbeitet werden ausschließlich öffentlich zugängliche Veröffentlichungen; maßgeblich bleiben immer die verlinkten, möglichst ursprünglichen Quellen.</li>
     <li><strong>Rechte und Lizenzen:</strong> Es werden keine fremden Bilder, Dokumente oder vollständigen
       Artikel veröffentlicht, sondern Zahlen und knapp paraphrasierte Tatsachen mit Quellenlink.
       Details und verbleibende rechtliche Unsicherheiten stehen in der
@@ -250,12 +248,7 @@ footer li{margin-bottom:5px}
     <li>Die Breitenbachtalsperre steht seit 2016 wegen erhöhten Sickerwasseranfalls unter einer
       <strong>vorläufigen Stauzielabsenkung</strong>. Ihr Füllgrad erreicht deshalb auch in nassen Jahren
       nur rund 86–87 % — die Werte sind mit denen der Obernautalsperre nicht unmittelbar vergleichbar.</li>
-    <li>Die Reihe umfasst <strong>1998 bis Okt. 2003</strong> (HTML-Berichte der damaligen Domain
-      bezreg-arnsberg.nrw.de, über die Wayback Machine) und <strong>2015 bis Aug. 2026</strong>
-      (PDF-Berichte bzw. Jahrestabelle auf bra.nrw.de). Für <strong>Nov. 2003 bis 2014</strong> sowie
-      für <strong>Aug.–Sept. 2025</strong> ist kein Bericht archiviert. Die Dateien für 2004–2007
-      existierten nachweislich (belegt durch die Indexseite von 2007), wurden aber von keinem
-      Webarchiv erfasst und sind auf dem Live-Server gelöscht.</li>
+    <li>Die Reihe umfasst <strong>1998 bis Okt. 2003</strong> (HTML-Berichte der damaligen Domain bezreg-arnsberg.nrw.de, über die Wayback Machine) und <strong>2015 bis Aug. 2026</strong> (PDF-Berichte bzw. Jahrestabelle auf bra.nrw.de). Für <strong>Nov. 2003 bis 2014</strong> ist kein Bericht mit Messwerten archiviert. Jahresseiten für 2004–2013 sind nachweisbar, ihre verlinkten Messdateien wurden aber von keinem bekannten Webarchiv erfasst und sind auf dem Live-Server gelöscht.</li>
     <li>Die Tonalitäts-Einstufung ist eine qualitative Bewertung der jeweiligen Kernaussage und damit
       interpretativ, nicht messbar.</li>
   </ul>
@@ -489,8 +482,12 @@ function zeichneMain() {
       if (k.unten) ds.push(gerade(k.unten, "Tiefststände", [2,4]));
     }
   }
+  const dams = [...state.dams];
   ds.push({label:"Berichterstattung", type:"scatter",
-    data:berichte().map(b => ({x:ms(b.d), y:wertAm(b.d, "Obernautalsperre") ?? 50, b})),
+    data:berichte().map(b => {
+      const y = korrWert(b.d, dams);
+      return y == null ? null : {x:ms(b.d), y, b};
+    }).filter(Boolean),
     pointStyle:"rectRot", pointRadius:9, pointHoverRadius:12,
     backgroundColor:c => TONCOL[c.raw?.b?.ton] || "#8fa3b8",
     borderColor:"#0f1720", borderWidth:1.5, showLine:false});
@@ -513,10 +510,6 @@ function datensatzAm(datum, dam, daten = DATEN) {
     if (dd < dist) { dist = dd; best = r; }
   }
   return dist <= 45 * 864e5 ? best : null;
-}
-
-function wertAm(datum, dam) {
-  return datensatzAm(datum, dam)?.p ?? null;
 }
 
 function korrWert(datum, dams, daten = DATEN) {
@@ -632,27 +625,34 @@ function zeichneKpis() {
     if (!state.dams.has(dam)) continue;
     const v = messwerte().filter(r => r.t === dam);
     if (!v.length) continue;
+    const row = document.createElement("div");
+    row.className = "kpi-row";
+    box.appendChild(row);
     const letzt = v[v.length-1];
     const min = v.reduce((a,b) => b.p < a.p ? b : a);
     const max = v.reduce((a,b) => b.p > a.p ? b : a);
-    add(box, dam + " · zuletzt", letzt.p.toFixed(1) + " %",
+    add(row, dam + " · zuletzt", letzt.p.toFixed(1) + " %",
         `${fmt(letzt.d)} · ${letzt.m.toFixed(2)} Mio. m³`, COL[dam]);
     const normal = saisonNormal(letzt);
     if (normal) {
       const diff = letzt.p - normal.wert;
-      add(box, dam + " · zum Saisonnormal",
+      add(row, dam + " · zum Saisonnormal",
           `${diff >= 0 ? "+" : "−"}${Math.abs(diff).toFixed(1)} %-Pkt.`,
           `Median ${normal.wert.toFixed(1)} % · ${normal.n} Vorjahreswerte`,
           diff < 0 ? TONCOL.alarmierend : diff > 0 ? TONCOL.beruhigend : TONCOL.neutral);
     }
-    add(box, dam + " · Tiefststand", min.p.toFixed(1) + " %", fmt(min.d), COL[dam]);
-    add(box, dam + " · Höchststand", max.p.toFixed(1) + " %", fmt(max.d), COL[dam]);
+    add(row, dam + " · Tiefststand", min.p.toFixed(1) + " %", fmt(min.d), COL[dam]);
+    add(row, dam + " · Höchststand", max.p.toFixed(1) + " %", fmt(max.d), COL[dam]);
   }
   const b = berichte();
-  const idx = b.length ? b.reduce((s,x) => s + TONWERT[x.ton], 0) / b.length : 0;
-  add(box, "Sentiment-Index", (idx >= 0 ? "+" : "") + idx.toFixed(2),
+  const idx = b.length ? b.reduce((s,x) => s + TONWERT[x.ton], 0) / b.length : null;
+  const row = document.createElement("div");
+  row.className = "kpi-row";
+  box.appendChild(row);
+  add(row, "Sentiment-Index", idx == null ? "—" : (idx >= 0 ? "+" : "") + idx.toFixed(2),
       `${b.length} Beiträge · −1 alarmierend … +1 beruhigend`,
-      idx < -0.5 ? TONCOL.alarmierend : idx < 0 ? TONCOL.besorgt : TONCOL.beruhigend);
+      idx == null ? TONCOL.neutral :
+        idx < -0.5 ? TONCOL.alarmierend : idx < 0 ? TONCOL.besorgt : TONCOL.beruhigend);
 }
 function add(box, lbl, val, note, col) {
   const d = document.createElement("div");
@@ -697,7 +697,7 @@ function zeichneTabelle() {
   tb.innerHTML = "";
   document.getElementById("rowinfo").textContent =
     `${v.length} Messpunkte im gewählten Zeitraum.`;
-  for (const r of v.slice(0, 800)) {
+  for (const r of v) {
     const tr = document.createElement("tr");
     tr.innerHTML = `<td></td><td></td><td class="num"></td><td class="num"></td>
                     <td><a target="_blank" rel="noopener">Bericht ↗</a></td>`;

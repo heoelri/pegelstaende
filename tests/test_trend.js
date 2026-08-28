@@ -82,5 +82,6 @@ assert.ok(Math.abs(korrWert("2020-01-01",
   ["Obernautalsperre", "Breitenbachtalsperre"], paar) - 50) < 0.001);
 assert.strictEqual(korrWert("2020-01-01",
   ["Obernautalsperre", "Breitenbachtalsperre"], paar.slice(0, 1)), null);
+assert.strictEqual(korrWert("2020-03-01", ["Obernautalsperre"], paar), null);
 
 console.log("alle Tests bestanden");

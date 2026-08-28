@@ -3726,5 +3726,69 @@
   "inhalt_mio_m3": 10.87,
   "fuellgrad_pct": 72.95,
   "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-07-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-08-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 4.7,
+  "fuellgrad_pct": 60.26,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-08-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-08-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 9.58,
+  "fuellgrad_pct": 64.3,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-08-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-09-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 4.36,
+  "fuellgrad_pct": 55.9,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-09-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-09-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 9.13,
+  "fuellgrad_pct": 61.28,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-09-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-09-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 4.1,
+  "fuellgrad_pct": 52.56,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-09-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-09-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 8.73,
+  "fuellgrad_pct": 58.59,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-09-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-10-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 3.82,
+  "fuellgrad_pct": 48.97,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-10-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-10-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 8.27,
+  "fuellgrad_pct": 55.5,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-10-01_talsperrenfuellstaende.pdf"
  }
 ]

@@ -25,7 +25,9 @@ archive and is only needed when BRA adds or changes older individual PDFs.
 
 - Prefer the Bezirksregierung Arnsberg PDF for exact official measurements.
 - Use WVS or authority publications for newer rounded values and measures.
-- Every value and event must link directly to its public original source.
+- Every dataset, value, event, report, and derived statement must cite a directly verified public source. Prefer the primary source; if it is unavailable, use and clearly identify the best verifiable secondary source.
+- Before using a source, check its license and terms of use. Document the license, required attribution, reuse restrictions, and any uncertainty in `SOURCES.md`.
+- If no explicit reuse license exists, do not assume the content is freely licensed: use only the necessary factual data, avoid protected prose or media, and record the limitation in `SOURCES.md`.
 - Do not use search-result summaries as evidence; open and verify the source.
 - Do not bypass paywalls, authentication, robots restrictions, or access
   controls.
@@ -45,7 +47,9 @@ measurement updates belong in `daten.js`, not `BERICHTE`.
 Keep edits surgical. Do not add frameworks, dependencies, generated reports,
 or new abstractions.
 
-Do not add artificial line breaks to prose. Keep each paragraph or list item on one physical line unless the format requires otherwise.
+After any deep-dive review that produces no actual project change, ask the user whether the findings should be captured in a GitHub issue.
+
+Do not add artificial line breaks to new or edited prose. Keep each new or edited paragraph or list item on one physical line unless the format requires otherwise; existing wrapping may remain until that text is changed.
 
 ## Checks
 

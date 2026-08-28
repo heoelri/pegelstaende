@@ -5,10 +5,7 @@
 Inoffizielle, unabhängige Auswertung der Füllstände der Obernau- und
 Breitenbachtalsperre sowie der regionalen Berichterstattung dazu.
 
-Das Projekt ist weder vom Wasserverband Siegen-Wittgenstein (WVS) noch von
-einer Behörde beauftragt, geprüft oder betrieben. Es verarbeitet ausschließlich
-öffentlich zugängliche Daten. Verbindlich sind immer die in der Anwendung
-verlinkten Originalquellen.
+Das Projekt ist weder vom Wasserverband Siegen-Wittgenstein (WVS) noch von einer Behörde beauftragt, geprüft oder betrieben. Es verarbeitet ausschließlich öffentlich zugängliche Daten. Verbindlich sind immer die in der Anwendung verlinkten geprüften Quellen.
 
 ## Was die Seite zeigt
 
@@ -39,14 +36,13 @@ Die Python-Skripte lesen öffentlich erreichbare Veröffentlichungen der
 Bezirksregierung Arnsberg und historische Seiten aus dem Internet Archive.
 
 ```powershell
-python .\scripts\talsperren_all.py
 python .\scripts\talsperren_jahrestabelle.py 2026
 python .\scripts\build_daten.py
 ```
 
-Aktuelle WVS-Pressewerte und neue Ereignisse werden nach Prüfung der
-Originalquelle in den Arrays `PRESSEWERTE`, `BERICHTE` und `EREIGNISSE` in
-`index.html` ergänzt.
+Aktuelle WVS-Pressewerte und neue Ereignisse werden nach Prüfung der bestmöglichen öffentlichen Quelle in den Arrays `PRESSEWERTE`, `BERICHTE` und `EREIGNISSE` in `index.html` ergänzt.
+
+`python .\scripts\talsperren_all.py` ist nur nötig, wenn ältere BRA-Berichte ergänzt oder geändert wurden.
 
 ## Grenzen
 
@@ -57,10 +53,7 @@ behördliche Auskunft zur Trinkwasserversorgung.
 
 ## Quellen und Rechte
 
-Die vollständige Einordnung der Quellen, Nutzungsbedingungen und Lizenzen steht
-in [`SOURCES.md`](SOURCES.md). Die Anwendung übernimmt keine fremden Bilder oder
-vollständigen Texte, sondern veröffentlicht Messwerte und knapp paraphrasierte
-Tatsachen mit direktem Link zur Originalquelle.
+Die vollständige Einordnung der Quellen, Nutzungsbedingungen und Lizenzen steht in [`SOURCES.md`](SOURCES.md). Die Anwendung übernimmt keine fremden Bilder oder vollständigen Texte, sondern veröffentlicht Messwerte und knapp paraphrasierte Tatsachen mit direktem Link zur geprüften Quelle.
 
 Für die amtliche Messreihe wurde keine ausdrückliche Open-Data-Lizenz gefunden.
 Die Veröffentlichung einzelner Tatsachen ist von der Übernahme geschützter
