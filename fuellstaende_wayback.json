@@ -1,0 +1,1154 @@
+[
+ {
+  "datum": "2021-09-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 5.79,
+  "fuellgrad_pct": 74.23,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_01.09.2021.pdf"
+ },
+ {
+  "datum": "2021-09-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 9.5,
+  "fuellgrad_pct": 63.76,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_01.09.2021.pdf"
+ },
+ {
+  "datum": "2021-09-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 5.73,
+  "fuellgrad_pct": 73.46,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_vom_15.09.21.pdf"
+ },
+ {
+  "datum": "2021-09-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 9.33,
+  "fuellgrad_pct": 62.62,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_vom_15.09.21.pdf"
+ },
+ {
+  "datum": "2021-10-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 5.53,
+  "fuellgrad_pct": 70.92,
+  "quelle": "https://bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_01.10.2021.pdf"
+ },
+ {
+  "datum": "2021-10-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 9.11,
+  "fuellgrad_pct": 61.11,
+  "quelle": "https://bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_01.10.2021.pdf"
+ },
+ {
+  "datum": "2021-10-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 5.34,
+  "fuellgrad_pct": 68.5,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_15.10.2021.pdf"
+ },
+ {
+  "datum": "2021-10-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 8.82,
+  "fuellgrad_pct": 59.18,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_15.10.2021.pdf"
+ },
+ {
+  "datum": "2021-11-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 5.18,
+  "fuellgrad_pct": 66.41,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_01-11-2021.pdf"
+ },
+ {
+  "datum": "2021-11-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 8.51,
+  "fuellgrad_pct": 57.11,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_01-11-2021.pdf"
+ },
+ {
+  "datum": "2021-11-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 5.06,
+  "fuellgrad_pct": 64.87,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_15-11-2021.pdf"
+ },
+ {
+  "datum": "2021-11-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 8.26,
+  "fuellgrad_pct": 55.44,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_15-11-2021.pdf"
+ },
+ {
+  "datum": "2021-12-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 4.9,
+  "fuellgrad_pct": 62.82,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_2021-12-01.pdf"
+ },
+ {
+  "datum": "2021-12-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 8.02,
+  "fuellgrad_pct": 53.83,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_2021-12-01.pdf"
+ },
+ {
+  "datum": "2021-12-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 5.14,
+  "fuellgrad_pct": 65.9,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_vom_15.12.21.pdf"
+ },
+ {
+  "datum": "2021-12-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 8.46,
+  "fuellgrad_pct": 56.78,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_vom_15.12.21.pdf"
+ },
+ {
+  "datum": "2022-01-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 5.38,
+  "fuellgrad_pct": 68.97,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfullstande-vom-01.01.2022.pdf"
+ },
+ {
+  "datum": "2022-01-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 8.89,
+  "fuellgrad_pct": 59.66,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfullstande-vom-01.01.2022.pdf"
+ },
+ {
+  "datum": "2022-02-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.48,
+  "fuellgrad_pct": 83.08,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_01.02.2022.pdf"
+ },
+ {
+  "datum": "2022-02-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 10.9,
+  "fuellgrad_pct": 73.15,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_01.02.2022.pdf"
+ },
+ {
+  "datum": "2022-02-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.67,
+  "fuellgrad_pct": 85.51,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_vom_15.02.2022.pdf"
+ },
+ {
+  "datum": "2022-02-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 12.71,
+  "fuellgrad_pct": 85.3,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_vom_15.02.2022.pdf"
+ },
+ {
+  "datum": "2022-03-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.62,
+  "fuellgrad_pct": 84.88,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfullstande-vom-01.03.2022.pdf"
+ },
+ {
+  "datum": "2022-03-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.68,
+  "fuellgrad_pct": 91.81,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfullstande-vom-01.03.2022.pdf"
+ },
+ {
+  "datum": "2022-03-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.56,
+  "fuellgrad_pct": 84.1,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_15.03.2022.pdf"
+ },
+ {
+  "datum": "2022-03-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.77,
+  "fuellgrad_pct": 92.42,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_15.03.2022.pdf"
+ },
+ {
+  "datum": "2022-04-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.61,
+  "fuellgrad_pct": 84.74,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfullstande-vom-15.04.22.pdf"
+ },
+ {
+  "datum": "2022-04-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 14.05,
+  "fuellgrad_pct": 94.3,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfullstande-vom-15.04.22.pdf"
+ },
+ {
+  "datum": "2022-05-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.58,
+  "fuellgrad_pct": 84.36,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_01-05-22.pdf"
+ },
+ {
+  "datum": "2022-05-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.92,
+  "fuellgrad_pct": 93.42,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_01-05-22.pdf"
+ },
+ {
+  "datum": "2022-05-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.45,
+  "fuellgrad_pct": 82.69,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_15-05-22.pdf"
+ },
+ {
+  "datum": "2022-05-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.73,
+  "fuellgrad_pct": 92.15,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_15-05-22.pdf"
+ },
+ {
+  "datum": "2022-06-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.06,
+  "fuellgrad_pct": 77.69,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_vom_15.06.2022.pdf"
+ },
+ {
+  "datum": "2022-06-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 12.98,
+  "fuellgrad_pct": 87.11,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_vom_15.06.2022.pdf"
+ },
+ {
+  "datum": "2022-07-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 5.79,
+  "fuellgrad_pct": 74.23,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_vom_01-07-2022.pdf"
+ },
+ {
+  "datum": "2022-07-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 12.57,
+  "fuellgrad_pct": 84.36,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_vom_01-07-2022.pdf"
+ },
+ {
+  "datum": "2022-08-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 5.23,
+  "fuellgrad_pct": 67.05,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_v._01.08.22.pdf"
+ },
+ {
+  "datum": "2022-08-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 11.68,
+  "fuellgrad_pct": 78.39,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_v._01.08.22.pdf"
+ },
+ {
+  "datum": "2022-08-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 4.93,
+  "fuellgrad_pct": 63.21,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_15.08.2022.pdf"
+ },
+ {
+  "datum": "2022-08-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 11.22,
+  "fuellgrad_pct": 75.3,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_15.08.2022.pdf"
+ },
+ {
+  "datum": "2022-09-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 4.56,
+  "fuellgrad_pct": 58.46,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_01.09.2022.pdf"
+ },
+ {
+  "datum": "2022-09-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 10.63,
+  "fuellgrad_pct": 71.34,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_01.09.2022.pdf"
+ },
+ {
+  "datum": "2022-09-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 4.33,
+  "fuellgrad_pct": 55.51,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_vom_15.09.2022.pdf"
+ },
+ {
+  "datum": "2022-09-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 10.27,
+  "fuellgrad_pct": 68.93,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/talsperrenfuellstaende_vom_15.09.2022.pdf"
+ },
+ {
+  "datum": "2022-10-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 4.27,
+  "fuellgrad_pct": 54.74,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2022-10-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2022-10-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 10.1,
+  "fuellgrad_pct": 67.79,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2022-10-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2022-10-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 4.31,
+  "fuellgrad_pct": 55.26,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2022-10-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2022-10-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 9.91,
+  "fuellgrad_pct": 66.51,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2022-10-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2022-11-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 4.3,
+  "fuellgrad_pct": 55.13,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2022-11-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2022-11-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 9.61,
+  "fuellgrad_pct": 64.5,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2022-11-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2022-11-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 4.26,
+  "fuellgrad_pct": 54.62,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2022-11-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2022-11-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 9.27,
+  "fuellgrad_pct": 62.21,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2022-11-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2022-12-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 4.46,
+  "fuellgrad_pct": 57.18,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2022-12-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2022-12-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 9.27,
+  "fuellgrad_pct": 62.21,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2022-12-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2022-12-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 4.45,
+  "fuellgrad_pct": 57.05,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2022-12-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2022-12-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 9.17,
+  "fuellgrad_pct": 61.54,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2022-12-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-01-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 5.09,
+  "fuellgrad_pct": 65.26,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-01-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-01-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 10.2,
+  "fuellgrad_pct": 68.46,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-01-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-01-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.34,
+  "fuellgrad_pct": 81.28,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-01-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-01-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 12.11,
+  "fuellgrad_pct": 81.28,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-01-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-02-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.65,
+  "fuellgrad_pct": 85.26,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-02-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-02-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.23,
+  "fuellgrad_pct": 88.79,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-02-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-02-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.65,
+  "fuellgrad_pct": 85.26,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-02-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-02-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.73,
+  "fuellgrad_pct": 92.15,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-02-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-03-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.71,
+  "fuellgrad_pct": 86.03,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-03-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-03-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.81,
+  "fuellgrad_pct": 92.68,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-03-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-03-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.76,
+  "fuellgrad_pct": 86.67,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-03-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-03-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 14.56,
+  "fuellgrad_pct": 97.72,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-03-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-04-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.74,
+  "fuellgrad_pct": 86.41,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-04-01_talsperrenfuellstaende_0.pdf"
+ },
+ {
+  "datum": "2023-04-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 14.68,
+  "fuellgrad_pct": 98.52,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-04-01_talsperrenfuellstaende_0.pdf"
+ },
+ {
+  "datum": "2023-04-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.76,
+  "fuellgrad_pct": 86.67,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-04-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-04-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 14.75,
+  "fuellgrad_pct": 98.99,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-04-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-05-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.73,
+  "fuellgrad_pct": 86.28,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-05-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-05-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 14.76,
+  "fuellgrad_pct": 99.06,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-05-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-05-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.74,
+  "fuellgrad_pct": 86.41,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-05-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-05-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 14.79,
+  "fuellgrad_pct": 99.26,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-05-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-06-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.66,
+  "fuellgrad_pct": 85.38,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-06-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-06-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 14.59,
+  "fuellgrad_pct": 97.92,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-06-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-06-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.45,
+  "fuellgrad_pct": 82.69,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-06-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-06-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 14.19,
+  "fuellgrad_pct": 95.23,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-06-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-07-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.29,
+  "fuellgrad_pct": 80.64,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-07-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-07-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.81,
+  "fuellgrad_pct": 92.68,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-07-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-07-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.1,
+  "fuellgrad_pct": 78.15,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-07-15_-_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-07-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.42,
+  "fuellgrad_pct": 90.08,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-07-15_-_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-08-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 5.84,
+  "fuellgrad_pct": 74.86,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-08-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.12,
+  "fuellgrad_pct": 88.04,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-08-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.48,
+  "fuellgrad_pct": 83.08,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-08-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-08-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.71,
+  "fuellgrad_pct": 92.01,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-08-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-09-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.74,
+  "fuellgrad_pct": 86.41,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-09-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-09-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.45,
+  "fuellgrad_pct": 90.27,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-09-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-09-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.72,
+  "fuellgrad_pct": 86.15,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-09-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-09-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.28,
+  "fuellgrad_pct": 89.13,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-09-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-10-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.61,
+  "fuellgrad_pct": 84.74,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-10-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-10-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.01,
+  "fuellgrad_pct": 87.32,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-10-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-10-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.48,
+  "fuellgrad_pct": 83.08,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-10-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-10-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 12.68,
+  "fuellgrad_pct": 85.1,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-10-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-11-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.54,
+  "fuellgrad_pct": 83.85,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-11-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-11-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 12.63,
+  "fuellgrad_pct": 84.77,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-11-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-11-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.64,
+  "fuellgrad_pct": 85.13,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-11-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-11-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.23,
+  "fuellgrad_pct": 88.79,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-11-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-12-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.63,
+  "fuellgrad_pct": 85.0,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-12-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-12-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.65,
+  "fuellgrad_pct": 91.61,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-12-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-12-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.66,
+  "fuellgrad_pct": 85.38,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-12-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2023-12-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.71,
+  "fuellgrad_pct": 92.01,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2023-12-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2024-02-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.62,
+  "fuellgrad_pct": 84.87,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2024-02-01-talsperrenfullstande.pdf"
+ },
+ {
+  "datum": "2024-02-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.63,
+  "fuellgrad_pct": 91.48,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2024-02-01-talsperrenfullstande.pdf"
+ },
+ {
+  "datum": "2024-04-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.62,
+  "fuellgrad_pct": 84.87,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2024-04-01-talsperrenfullstande.pdf"
+ },
+ {
+  "datum": "2024-04-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.71,
+  "fuellgrad_pct": 92.01,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2024-04-01-talsperrenfullstande.pdf"
+ },
+ {
+  "datum": "2024-04-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.83,
+  "fuellgrad_pct": 87.56,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2024-04-15-talsperrenfullstande.pdf"
+ },
+ {
+  "datum": "2024-04-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 14.2,
+  "fuellgrad_pct": 95.3,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2024-04-15-talsperrenfullstande.pdf"
+ },
+ {
+  "datum": "2024-05-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.78,
+  "fuellgrad_pct": 86.92,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2024-05-01-talsperrenfullstande.pdf"
+ },
+ {
+  "datum": "2024-05-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 14.52,
+  "fuellgrad_pct": 97.45,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2024-05-01-talsperrenfullstande.pdf"
+ },
+ {
+  "datum": "2024-05-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.75,
+  "fuellgrad_pct": 86.54,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2024-05-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2024-05-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 14.76,
+  "fuellgrad_pct": 99.06,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2024-05-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2024-07-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.51,
+  "fuellgrad_pct": 83.46,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2024-07-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2024-07-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 14.34,
+  "fuellgrad_pct": 96.24,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2024-07-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2024-08-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.22,
+  "fuellgrad_pct": 79.74,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2024-08-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2024-08-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.94,
+  "fuellgrad_pct": 93.56,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2024-08-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-01-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.7,
+  "fuellgrad_pct": 85.9,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-01-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-01-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.29,
+  "fuellgrad_pct": 89.19,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-01-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-01-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.62,
+  "fuellgrad_pct": 84.87,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-01-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-01-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.66,
+  "fuellgrad_pct": 91.68,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-01-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-02-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.69,
+  "fuellgrad_pct": 85.77,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-02-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-02-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.79,
+  "fuellgrad_pct": 92.55,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-02-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-02-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.62,
+  "fuellgrad_pct": 84.87,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-02-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-02-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.58,
+  "fuellgrad_pct": 91.14,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-02-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-03-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.55,
+  "fuellgrad_pct": 83.97,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-03-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-03-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.37,
+  "fuellgrad_pct": 89.73,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-03-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-03-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.43,
+  "fuellgrad_pct": 82.44,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-03-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-03-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 13.12,
+  "fuellgrad_pct": 88.05,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-03-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-04-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.26,
+  "fuellgrad_pct": 80.26,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-04-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-04-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 12.76,
+  "fuellgrad_pct": 85.64,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-04-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-04-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.05,
+  "fuellgrad_pct": 77.56,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-04-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-04-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 12.4,
+  "fuellgrad_pct": 83.22,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-04-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-05-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 6.01,
+  "fuellgrad_pct": 77.05,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-05-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-05-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 12.25,
+  "fuellgrad_pct": 82.21,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-05-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-05-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 5.88,
+  "fuellgrad_pct": 75.38,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-05-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-05-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 11.99,
+  "fuellgrad_pct": 80.47,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-05-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-06-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 5.71,
+  "fuellgrad_pct": 73.21,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-06-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-06-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 11.56,
+  "fuellgrad_pct": 77.58,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-06-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-06-15",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 5.67,
+  "fuellgrad_pct": 72.69,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-06-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-06-15",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 11.37,
+  "fuellgrad_pct": 76.31,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-06-15_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-07-01",
+  "talsperre": "Breitenbach",
+  "stauraum_mio_m3": 7.8,
+  "inhalt_mio_m3": 5.48,
+  "fuellgrad_pct": 70.26,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-07-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-07-01",
+  "talsperre": "Obernau",
+  "stauraum_mio_m3": 14.9,
+  "inhalt_mio_m3": 10.87,
+  "fuellgrad_pct": 72.95,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2025-07-01_talsperrenfuellstaende.pdf"
+ }
+]

@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pegelstände Obernau- &amp; Breitenbachtalsperre · Kreis Siegen-Wittgenstein</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="daten.js"></script>
+<style>
+:root{
+  --bg:#0f1720; --panel:#16212e; --panel2:#1c2937; --line:#26374a;
+  --fg:#e8eef5; --muted:#8fa3b8; --obernau:#4ea1ff; --breitenbach:#38d9a9;
+  --alarm:#ff6b6b; --besorgt:#ffa94d; --neutral:#8fa3b8; --beruhigend:#51cf66;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:15px/1.55 "Segoe UI",system-ui,-apple-system,sans-serif}
+a{color:var(--obernau)}
+header{padding:26px 28px 18px;border-bottom:1px solid var(--line);background:var(--panel)}
+h1{margin:0 0 6px;font-size:22px;font-weight:650;letter-spacing:-.2px}
+header p{margin:0;color:var(--muted);font-size:13.5px;max-width:100ch}
+main{padding:22px 28px 60px;max-width:1500px;margin:0 auto}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:18px 20px;margin-bottom:20px}
+.card h2{margin:0 0 4px;font-size:16px;font-weight:620}
+.card .sub{margin:0 0 16px;color:var(--muted);font-size:12.5px}
+.grid{display:grid;gap:20px}
+@media(min-width:1100px){.grid.two{grid-template-columns:1fr 1fr}}
+.kpis{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-bottom:20px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi .lbl{color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.6px}
+.kpi .val{font-size:26px;font-weight:660;margin-top:4px;font-variant-numeric:tabular-nums}
+.kpi .note{color:var(--muted);font-size:12px;margin-top:2px}
+.filters{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end}
+.f{display:flex;flex-direction:column;gap:6px}
+.f label{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+select,input[type=range]{background:var(--panel2);color:var(--fg);border:1px solid var(--line);
+  border-radius:7px;padding:7px 10px;font:inherit;font-size:13.5px}
+input[type=range]{padding:0;width:190px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--panel2);color:var(--muted);
+  border-radius:999px;padding:6px 13px;font-size:12.5px;cursor:pointer;user-select:none}
+.chip[aria-pressed=true]{color:#0f1720;font-weight:600}
+.chip.obernau[aria-pressed=true]{background:var(--obernau);border-color:var(--obernau)}
+.chip.breitenbach[aria-pressed=true]{background:var(--breitenbach);border-color:var(--breitenbach)}
+.chip.alarmierend[aria-pressed=true]{background:var(--alarm);border-color:var(--alarm)}
+.chip.besorgt[aria-pressed=true]{background:var(--besorgt);border-color:var(--besorgt)}
+.chip.neutral[aria-pressed=true]{background:var(--neutral);border-color:var(--neutral)}
+.chip.beruhigend[aria-pressed=true]{background:var(--beruhigend);border-color:var(--beruhigend)}
+.chip.trend[aria-pressed=true]{background:#8fa3b8;border-color:#8fa3b8}
+.wrap{position:relative;height:380px}
+.wrap.sm{height:300px}
+.tl{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--line);max-height:620px;overflow-y:auto}
+.tl li{position:relative;padding:0 0 20px 4px}
+.tl li::before{content:"";position:absolute;left:-29px;top:5px;width:11px;height:11px;
+  border-radius:50%;background:var(--neutral);border:2px solid var(--panel)}
+.tl li.alarmierend::before{background:var(--alarm)}
+.tl li.besorgt::before{background:var(--besorgt)}
+.tl li.beruhigend::before{background:var(--beruhigend)}
+.tl li.ereignis::before{background:var(--fg);border-radius:2px}
+.tl .date{font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tl .ttl{font-weight:600;margin:2px 0 3px;font-size:14px}
+.tl .meta{font-size:12.5px;color:var(--muted)}
+.tl .fig{display:inline-block;margin-top:5px;font-size:12.5px;
+  background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:3px 9px;
+  font-variant-numeric:tabular-nums}
+.tag{display:inline-block;font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;
+  padding:2px 7px;border-radius:4px;margin-left:7px;vertical-align:1px}
+.tag.alarmierend{background:rgba(255,107,107,.18);color:var(--alarm)}
+.tag.besorgt{background:rgba(255,169,77,.18);color:var(--besorgt)}
+.tag.neutral{background:rgba(143,163,184,.18);color:var(--neutral)}
+.tag.beruhigend{background:rgba(81,207,102,.18);color:var(--beruhigend)}
+.tag.ereignis{background:rgba(232,238,245,.14);color:var(--fg)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.5px}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.scroll{max-height:420px;overflow:auto}
+footer{color:var(--muted);font-size:12.5px;padding:0 28px 40px;max-width:1500px;margin:0 auto}
+footer h3{color:var(--fg);font-size:14px;margin:22px 0 8px}
+footer li{margin-bottom:5px}
+.warn{background:rgba(255,169,77,.12);border:1px solid var(--besorgt);color:#ffd8a8;
+  border-radius:9px;padding:11px 14px;font-size:13px;margin-bottom:20px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Pegelstände der Obernau- und Breitenbachtalsperre</h1>
+  <p>Kreis Siegen-Wittgenstein · Wasserverband Siegen-Wittgenstein (WVS). Amtliche Füllstands­zeitreihe
+     der Bezirksregierung Arnsberg (Dezernat 54 Wasserwirtschaft) kombiniert mit einer
+     Sentiment-Auswertung der regionalen Berichterstattung. Alle Datenpunkte sind mit Quelle verlinkt.</p>
+  <p><strong>Inoffizielle, unabhängige Auswertung:</strong> Dieses Angebot ist weder vom WVS noch von
+     einer Behörde beauftragt oder betrieben und verwendet ausschließlich öffentlich zugängliche Daten.</p>
+</header>
+
+<main>
+  <div id="nodata" class="warn" hidden></div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <section class="card">
+    <h2>Filter</h2>
+    <p class="sub">Wirkt auf alle Diagramme und die Chronik.</p>
+    <div class="filters">
+      <div class="f">
+        <label for="von">Zeitraum ab</label>
+        <select id="von"></select>
+      </div>
+      <div class="f">
+        <label for="bis">Zeitraum bis</label>
+        <select id="bis"></select>
+      </div>
+      <div class="f">
+        <label>Talsperre</label>
+        <div class="chips" id="dams">
+          <button class="chip obernau" data-dam="Obernautalsperre" aria-pressed="true">Obernautalsperre</button>
+          <button class="chip breitenbach" data-dam="Breitenbachtalsperre" aria-pressed="true">Breitenbachtalsperre</button>
+        </div>
+      </div>
+      <div class="f">
+        <label>Tonalität der Berichterstattung</label>
+        <div class="chips" id="tones">
+          <button class="chip alarmierend" data-tone="alarmierend" aria-pressed="true">alarmierend</button>
+          <button class="chip besorgt" data-tone="besorgt" aria-pressed="true">besorgt</button>
+          <button class="chip neutral" data-tone="neutral" aria-pressed="true">neutral</button>
+          <button class="chip beruhigend" data-tone="beruhigend" aria-pressed="true">beruhigend</button>
+        </div>
+      </div>
+      <div class="f">
+        <label>Darstellung</label>
+        <div class="chips" id="opts">
+          <button class="chip trend" id="trendChip" aria-pressed="true">Trendlinien</button>
+        </div>
+      </div>
+      <div class="f">
+        <label for="glatt">Glättung <span id="glattTxt">aus</span></label>
+        <input type="range" id="glatt" min="0" max="12" step="1" value="0">
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Füllstandsverlauf</h2>
+    <p class="sub">Füllgrad in Prozent des Stauraums (Obernau 14,9 Mio. m³, Breitenbach 7,8 Mio. m³).
+       Rautenmarker = Berichterstattung, eingefärbt nach Tonalität.
+       Gestrichelt = Trendkanal je Talsperre: lang gestrichelt die Trendgerade durch die
+       Jahreshöchststände, fein gepunktet die durch die Jahrestiefststände. Beide abschaltbar.
+       Die Trendgeraden überspannen die Datenlücke 2004–2014 rechnerisch — für einen belastbaren
+       Trend besser einen lückenfreien Zeitraum wählen (z. B. ab 2015).
+       Lücke Nov 2003 – 2014: für diesen Zeitraum ist kein amtlicher Bericht archiviert.</p>
+    <div class="wrap"><canvas id="cMain"></canvas></div>
+  </section>
+
+  <div class="grid two">
+    <section class="card">
+      <h2>Jahresverlauf im Vergleich</h2>
+      <p class="sub">Jedes Jahr als eigene Kurve über den Jahresverlauf — zeigt das saisonale Muster
+         (Winterfüllung, Sommerzehrung) und welche Jahre aus der Reihe fallen.</p>
+      <div class="f" style="margin-bottom:12px">
+        <label for="saisonDam">Talsperre für diesen Vergleich</label>
+        <select id="saisonDam">
+          <option value="Obernautalsperre">Obernautalsperre</option>
+          <option value="Breitenbachtalsperre">Breitenbachtalsperre</option>
+        </select>
+      </div>
+      <div class="wrap sm"><canvas id="cSaison"></canvas></div>
+    </section>
+
+    <section class="card">
+      <h2>Jahres-Spannweite: Minimum, Maximum, Mittel</h2>
+      <p class="sub">Balken = Spanne zwischen Jahrestiefst- und Jahreshöchststand, Punkt = Jahresmittel.
+         Der Jahrestiefstwert ist die aussagekräftigste Kennzahl für die Versorgungslage.</p>
+      <div class="wrap sm"><canvas id="cJahr"></canvas></div>
+    </section>
+  </div>
+
+  <div class="grid two">
+    <section class="card">
+      <h2>Sentiment der Berichterstattung</h2>
+      <p class="sub">Anzahl ausgewerteter Beiträge je Jahr, gestapelt nach Tonalität, dazu der
+         Sentiment-Index (+1 beruhigend … −1 alarmierend) als Linie.</p>
+      <div class="wrap sm"><canvas id="cTon"></canvas></div>
+    </section>
+
+    <section class="card">
+      <h2>Füllstand und Tonalität</h2>
+      <p class="sub">Jeder Beitrag als Punkt: X = Datum, Y = Füllstand der Obernautalsperre zu diesem
+         Zeitpunkt. Zeigt, ab welchem Füllstand die Berichterstattung kippt.</p>
+      <div class="wrap sm"><canvas id="cKorr"></canvas></div>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2>Chronik: Berichterstattung und Ereignisse</h2>
+    <p class="sub">Quadratische Marker = bauliche bzw. politische Ereignisse, runde Marker = Medien- und
+       Behördenbeiträge. Jeder Eintrag verlinkt auf die Quelle.</p>
+    <ul class="tl" id="chronik"></ul>
+  </section>
+
+  <section class="card">
+    <h2>Messwerte (gefilterte Rohdaten)</h2>
+    <p class="sub">Amtliche 14-tägige Stichtagswerte. <span id="rowinfo"></span></p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Stichtag</th><th>Talsperre</th><th class="num">Inhalt Mio. m³</th>
+          <th class="num">Füllgrad</th><th>Quelle</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <h3>Quellen und Methodik</h3>
+  <ul>
+    <li><strong>Status:</strong> Dies ist eine inoffizielle, unabhängige Zusammenstellung ohne
+      Verbindung zum WVS oder zu den genannten Behörden. Verarbeitet werden ausschließlich öffentlich
+      zugängliche Veröffentlichungen; maßgeblich bleiben immer die verlinkten Originalquellen.</li>
+    <li><strong>Füllstandszeitreihe:</strong> Bezirksregierung Arnsberg, Dezernat 54 Wasserwirtschaft,
+      Berichtsreihe „Füllungsstände der Talsperren im Dienstbezirk der BR Arnsberg“ (14-tägig, Stichtage
+      1. und 15. des Monats) —
+      <a href="https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/wasserwirtschaft-und-gewaesserschutz/talsperren" target="_blank" rel="noopener">bra.nrw.de</a>.
+      Werte automatisiert aus den amtlichen PDF- bzw. HTML-Berichten extrahiert; jede Zeile ist in der
+      Tabelle einzeln auf ihr Quelldokument verlinkt.</li>
+    <li><strong>Aktuelle Werte 2026 und Niederschlagsdaten:</strong> Wasserverband Siegen-Wittgenstein —
+      <a href="https://wvs.nrw/" target="_blank" rel="noopener">wvs.nrw</a>, Pressemitteilungen vom
+      17.04.2026, 08.06.2026, 23.07.2026 und 21.08.2026.</li>
+    <li><strong>Amtliche Verfügungen:</strong> Kreis Siegen-Wittgenstein (Untere Wasserbehörde) und
+      Bezirksregierung Arnsberg, Allgemeinverfügungen Juli und August 2026.</li>
+    <li><strong>Anlagenzustand:</strong> Umweltinspektionsberichte der Bezirksregierung Arnsberg zur
+      Obernautalsperre (15.04.2026) und Breitenbachtalsperre (25.09.2025).</li>
+    <li><strong>Berichterstattung:</strong> WDR Lokalzeit Südwestfalen, wirSiegen.de, vdsm.net/agv-si-wi.de
+      (WVS-Pressemitteilungen), Kreis- und Kommunalportale. Siegener Zeitung und Westfalenpost sind
+      vollständig paywall-geschützt und auch über Archivdienste nicht erschließbar — die Auswertung
+      stützt sich daher auf frei zugängliche regionale Quellen.</li>
+  </ul>
+  <h3>Wichtige Einschränkungen</h3>
+  <ul>
+    <li>Die Breitenbachtalsperre steht seit 2016 wegen erhöhten Sickerwasseranfalls unter einer
+      <strong>vorläufigen Stauzielabsenkung</strong>. Ihr Füllgrad erreicht deshalb auch in nassen Jahren
+      nur rund 86–87 % — die Werte sind mit denen der Obernautalsperre nicht unmittelbar vergleichbar.</li>
+    <li>Die Reihe umfasst <strong>1998 bis Okt. 2003</strong> (HTML-Berichte der damaligen Domain
+      bezreg-arnsberg.nrw.de, über die Wayback Machine) und <strong>2015 bis Aug. 2026</strong>
+      (PDF-Berichte bzw. Jahrestabelle auf bra.nrw.de). Für <strong>Nov. 2003 bis 2014</strong> sowie
+      für <strong>Aug.–Sept. 2025</strong> ist kein Bericht archiviert. Die Dateien für 2004–2007
+      existierten nachweislich (belegt durch die Indexseite von 2007), wurden aber von keinem
+      Webarchiv erfasst und sind auf dem Live-Server gelöscht.</li>
+    <li>Die Tonalitäts-Einstufung ist eine qualitative Bewertung der jeweiligen Kernaussage und damit
+      interpretativ, nicht messbar.</li>
+  </ul>
+</footer>
+
+<script>
+/* ---------- Ereignisse und ausgewertete Berichterstattung ---------- */
+const EREIGNISSE = [
+  {d:"1956-09-05", t:"Breitenbachtalsperre in Betrieb genommen", q:"Erste Trinkwassertalsperre des Verbands.", u:"https://de.wikipedia.org/wiki/Breitenbachtalsperre_(Hilchenbach)"},
+  {d:"1972-11-07", t:"Obernautalsperre in Betrieb genommen", q:"14,9 Mio. m³ Stauraum, seither Hauptspeicher der Region.", u:"https://de.wikipedia.org/wiki/Obernautalsperre"},
+  {d:"1980-01-01", t:"Breitenbachtalsperre: Damm erhöht", q:"Ausbau 1976–1980, Speicher um rund 5,5 Mio. m³ vergrößert.", u:"https://de.wikipedia.org/wiki/Breitenbachtalsperre_(Hilchenbach)"},
+  {d:"2013-06-01", t:"Obernautalsperre abgesenkt: Sanierung der Asphaltbetondichtung", q:"Juni–Oktober 2013 Wasserstand um mehrere Meter abgesenkt, 32.000 m² Wasserwechselzone erneuert.", u:"https://www.ask-eu.de/Artikel/24993/Teilerneuerung-der-Asphaltbetonau%C3%9Fendichtung-der-Obernautalsperre.htm"},
+  {d:"2016-01-01", t:"Breitenbachtalsperre: vorläufige Stauzielabsenkung", q:"Erhöhter Sickerwasseranfall aus der Dammaufstandsfläche festgestellt; Stauziel vorläufig abgesenkt, verdichtete Bauwerksüberwachung. Bis heute in Kraft.", u:"https://www.bra.nrw.de/system/files/media/document/file/wasserverband_siegen-wittgenstein_breitenbachtalsperre_hilchenbach_25.09.2025.pdf"},
+  {d:"2019-12-13", t:"Kreistag gibt Machbarkeitsstudie für dritte Talsperre in Auftrag", q:"Standorte Truftetal (Bad Berleburg) und Elberndorftal; Folge des Rekordsommers 2018.", u:"https://wirsiegen.de/2019/11/sind-neue-trinkwassertalsperren-fuer-siegen-wittgenstein-machbar/305409/"},
+  {d:"2022-06-10", t:"Kreistag beschließt Bau einer dritten Talsperre im Truftetal", q:"Große Mehrheit; Planungshorizont mindestens 20 Jahre.", u:"https://www.siegen-wittgenstein.de/Kreisverwaltung/Themen-und-Projekte/Neue-Trinkwassertalsperre/?La=1&kuo=2&sub=0"},
+  {d:"2026-04-17", t:"WVS ergreift Vorsorgemaßnahmen", q:"Grundwasserwerk Siegtal auf Höchstlast, Antrag auf Reduzierung der Pflichtabgaben, Prüfung zusätzlicher Nebentäler.", u:"https://wvs.nrw/talsperrenstaende-unter-normalniveau-wvs-ergreift-vorsorgemassnahmen/"},
+  {d:"2026-07-15", t:"Bezirksregierung Arnsberg: Entnahmeverbot für Ruhr, Lenne und Sieg", q:"Pegel unterhalb des mittleren Niedrigwassers; Verbot bis 30.11.2026.", u:"https://wvs.nrw/anhaltende-trockenheit-bezirksregierung-untersagt-wasserentnahme-aus-ruhr-lenne-und-sieg/"},
+  {d:"2026-07-23", t:"Kreis Siegen-Wittgenstein: Entnahmeverbot für alle Flüsse und Bäche", q:"Allgemeinverfügung der Unteren Wasserbehörde, Bußgeld bis 50.000 €, befristet bis 30.11.2026.", u:"https://wvs.nrw/kreis-siegen-wittgenstein-erlaesst-wasserentnahme-verbot-aus-fluessen-und-baechen-im-kreisgebiet/"},
+  {d:"2026-08-21", t:"Kreis erlässt Trinkwasser-Sparverordnung", q:"Bestimmte Nutzungen von Trinkwasser ab 24.08. untersagt; zunächst bis 02.10.2026, Bußgeld bis 1.000 €.", u:"https://wvs.nrw/sinkende-talsperrenstaende-kreis-erlaesst-trinkwasser-sparverordnung-auch-biedenkopf-untersagt-verschiedene-wassernutzungen/"}
+];
+
+const BERICHTE = [
+  {d:"2018-08-15", medium:"WVS-Pressemitteilung (vdsm.net)", t:"Trinkwasserversorgung trotz Hitzeperiode gesichert",
+   ton:"beruhigend", zahlen:"Obernau 72,1 % (10,8 Mio. m³), Breitenbach 67 % (5,2 Mio. m³), Stand 10.08.2018",
+   kern:"Trotz Rekordsommer und deutlich erhöhtem Verbrauch sei die Versorgung gesichert.",
+   u:"https://www.vdsm.net/wronline/trinkwasserversorgung-trotz-hitzeperiode-gesichert/"},
+  {d:"2018-11-21", medium:"Kreis Siegen-Wittgenstein / vdsm.net", t:"Sichere Trinkwasserversorgung in Zeiten des Klimawandels",
+   ton:"besorgt", zahlen:"Talsperren „nach wie vor gut gefüllt“; Sommer 2018 übertraf 2003",
+   kern:"Erstmals wird der Klimawandel als struktureller Grund für neue Speicher benannt.",
+   u:"https://www.vdsm.net/wronline/sichere-trinkwasserversorgung-in-zeiten-des-klimawandels/"},
+  {d:"2019-11-07", medium:"wirSiegen.de", t:"Sind neue Trinkwassertalsperren für Siegen-Wittgenstein machbar?",
+   ton:"besorgt", zahlen:"Machbarkeitsstudie rund 150.000 €",
+   kern:"Landrat: Der Rekordsommer 2018 habe beide Talsperren „ziemlich geleert“.",
+   u:"https://wirsiegen.de/2019/11/sind-neue-trinkwassertalsperren-fuer-siegen-wittgenstein-machbar/305409/"},
+  {d:"2022-06-10", medium:"Kreis Siegen-Wittgenstein", t:"Kreistag beschließt dritte Trinkwassertalsperre im Truftetal",
+   ton:"besorgt", zahlen:"Beide Talsperren zusammen rund 16 Mio. m³; Abgabe 2020 über 17 Mio. m³",
+   kern:"Bestehende Speicher werden für den Klimawandel als zu klein bewertet.",
+   u:"https://www.siegen-wittgenstein.de/Kreisverwaltung/Themen-und-Projekte/Neue-Trinkwassertalsperre/?La=1&kuo=2&sub=0"},
+  {d:"2022-07-19", medium:"wirSiegen.de / Untere Wasserbehörde", t:"Wasserbehörde ruft zum sparsamen Umgang mit Wasser auf",
+   ton:"besorgt", zahlen:"keine Talsperrenwerte genannt",
+   kern:"Schutz von Bächen und Flüssen; Talsperrenfüllstände bleiben unerwähnt.",
+   u:"https://wirsiegen.de/2022/07/fluesse-und-baeche-mit-ihren-tier-und-pflanzengesellschaften-schuetzen-wasserbehoerde-des-kreises-ruft-zum-sparsamen-umgang-mit-wasser-auf/356929/"},
+  {d:"2023-06-16", medium:"wirSiegen.de / Kreis", t:"Anhaltende Trockenperiode beeinträchtigt die Gewässer",
+   ton:"besorgt", zahlen:"keine Talsperrenwerte genannt",
+   kern:"Entnahme mit Motorpumpen untersagt — bei zugleich sehr gut gefüllten Talsperren.",
+   u:"https://wirsiegen.de/2023/06/anhaltende-trockenperiode-beeintraechtigt-die-gewaesser-kreisverwaltung-verantwortungsvoller-umgang-mit-oberflaechenwasser-noetig/374041/"},
+  {d:"2023-07-15", medium:"wirSiegen.de / Kreis", t:"Sommerliche Trockenperiode beeinträchtigt die Gewässer massiv",
+   ton:"alarmierend", zahlen:"einzelne Gewässer bereits ausgetrocknet",
+   kern:"Entnahme nur noch mit Schöpfgefäßen; Gewässerökologie „nachhaltig gestört“.",
+   u:"https://wirsiegen.de/2023/07/sommerliche-trockenperiode-beeintraechtigt-die-gewaesser-im-kreisgebiet-massiv-wasserentnahme-nur-noch-mit-schoepfgefaessen-erlaubt/375542/"},
+  {d:"2024-09-05", medium:"wirSiegen.de", t:"Einblicke in die nachhaltige Trinkwasserversorgung an der Obernautalsperre",
+   ton:"beruhigend", zahlen:"Obernau rund 91 %, Breitenbach rund 75 %",
+   kern:"„So gut gefüllt wie selten zum Ende des Sommers“ — dritte Talsperre bleibt dennoch Thema.",
+   u:"https://wirsiegen.de/2024/09/einblicke-in-die-nachhaltige-trinkwasserversorgung-kommunale-klimabeauftragte-erfahren-bei-der-besichtigung-der-obernautalsperre-mehr-ueber-zukunftsorientierte-projekte-des-wvs/399623/"},
+  {d:"2026-03-19", medium:"WDR Lokalzeit Südwestfalen", t:"Zu wenig Wasser in Siegen-Wittgensteins Talsperren",
+   ton:"besorgt", zahlen:"Obernau 67 %, Breitenbach 74 %; Niederschlag 2025 nur 762 mm gegenüber 1.400 mm in 2023",
+   kern:"WVS-Geschäftsführer Dirk Müller relativiert: „Das ist keineswegs besorgniserregend.“",
+   u:"https://www1.wdr.de/nrw/sauerland-siegerland/kreis-siegen-wittgenstein/talsperren-leer-siegen-wittgenstein-obernau-100.amp"},
+  {d:"2026-04-17", medium:"Wasserverband Siegen-Wittgenstein", t:"Talsperrenstände unter Normalniveau: WVS ergreift Vorsorgemaßnahmen",
+   ton:"besorgt", zahlen:"Obernau 65 %, Breitenbach 73 %; Niederschlag 2025 −26,8 % bzw. −28,8 %",
+   kern:"Ursache sei „einzig und allein“ natürliche Klimaschwankung; langfristig brauche es eine weitere Talsperre oder eine Verbundleitung.",
+   u:"https://wvs.nrw/talsperrenstaende-unter-normalniveau-wvs-ergreift-vorsorgemassnahmen/"},
+  {d:"2026-05-12", medium:"Wasserverband Siegen-Wittgenstein", t:"Falsche Warnungen vor Leitungswasser auf TikTok",
+   ton:"neutral", zahlen:"—",
+   kern:"Der Verband tritt kursierenden Falschmeldungen über die Trinkwasserqualität entgegen.",
+   u:"https://wvs.nrw/falsche-warnungen-vor-leitungswasser-auf-tiktok/"},
+  {d:"2026-06-08", medium:"WVS, Kreis und elf Kommunen (gemeinsame PM), WDR, wirSiegen.de", t:"Eindringlicher Appell: Talsperren unter Druck — Trinkwasser sparen",
+   ton:"alarmierend", zahlen:"Obernau 60 %, Breitenbach 70 %; Niederschlag 2025: 762,5 mm bzw. 857,2 mm",
+   kern:"Erster koordinierter Sparappell aller Gebietskörperschaften; Springbrunnen aus, Pools nicht befüllen.",
+   u:"https://wvs.nrw/talsperren-weiter-unter-normalniveau-sparen-von-trinkwasser-jetzt-besonders-wichtig/"},
+  {d:"2026-07-10", medium:"WDR", t:"Wasserentnahme aus Flüssen in Südwestfalen verboten",
+   ton:"alarmierend", zahlen:"Bußgeld bis 50.000 €",
+   kern:"Vor-Ort-Bericht über illegale Pumpen; die Sieg sei „nur noch ein Rinnsal“.",
+   u:"https://www1.wdr.de/nrw/sauerland-siegerland/kreis-siegen-wittgenstein/fluesse-baeche-wasserentnahme-verboten-100.amp"},
+  {d:"2026-07-23", medium:"Kreis Siegen-Wittgenstein, wirSiegen.de, Stadt Siegen", t:"Kreis erlässt Verbot der Wasserentnahme aus Flüssen und Bächen",
+   ton:"alarmierend", zahlen:"Obernau 51 %, Breitenbach 62 %",
+   kern:"Schärfste Maßnahme des Betrachtungszeitraums; Trinkwasserversorgung „unter erhöhtem Druck“.",
+   u:"https://wirsiegen.de/2026/07/kreis-erlaesst-verbot-der-wasserentnahme-aus-fluessen-und-baechen-2/441879/"},
+  {d:"2026-08-21", medium:"Wasserverband Siegen-Wittgenstein / Kreis Siegen-Wittgenstein", t:"Weiter sinkende Talsperrenstände: Trinkwasser-Sparverordnung",
+   ton:"alarmierend", zahlen:"Obernau 46 %, Breitenbach 56 %; rund 5,8 Mio. m³ unter dem langjährigen Mittel",
+   kern:"Erstmals werden bestimmte Trinkwassernutzungen kreisweit untersagt; ohne Einsparungen drohen Beeinträchtigungen der Trinkwasserqualität.",
+   u:"https://wvs.nrw/sinkende-talsperrenstaende-kreis-erlaesst-trinkwasser-sparverordnung-auch-biedenkopf-untersagt-verschiedene-wassernutzungen/"}
+];
+
+/* Zusaetzliche belegte Einzelmesswerte aus Pressequellen (ergaenzen die amtliche Reihe) */
+const PRESSEWERTE = [
+  {d:"2018-08-10", t:"Obernautalsperre",     p:72.1, m:10.8, q:"https://www.vdsm.net/wronline/trinkwasserversorgung-trotz-hitzeperiode-gesichert/"},
+  {d:"2018-08-10", t:"Breitenbachtalsperre", p:67.0, m:5.2,  q:"https://www.vdsm.net/wronline/trinkwasserversorgung-trotz-hitzeperiode-gesichert/"},
+  {d:"2024-09-05", t:"Obernautalsperre",     p:91.0, m:13.6, q:"https://wirsiegen.de/2024/09/einblicke-in-die-nachhaltige-trinkwasserversorgung-kommunale-klimabeauftragte-erfahren-bei-der-besichtigung-der-obernautalsperre-mehr-ueber-zukunftsorientierte-projekte-des-wvs/399623/"},
+  {d:"2024-09-05", t:"Breitenbachtalsperre", p:75.0, m:5.9,  q:"https://wirsiegen.de/2024/09/einblicke-in-die-nachhaltige-trinkwasserversorgung-kommunale-klimabeauftragte-erfahren-bei-der-besichtigung-der-obernautalsperre-mehr-ueber-zukunftsorientierte-projekte-des-wvs/399623/"},
+  {d:"2026-03-19", t:"Obernautalsperre",     p:67.0, m:9.98, q:"https://www1.wdr.de/nrw/sauerland-siegerland/kreis-siegen-wittgenstein/talsperren-leer-siegen-wittgenstein-obernau-100.amp"},
+  {d:"2026-03-19", t:"Breitenbachtalsperre", p:74.0, m:5.77, q:"https://www1.wdr.de/nrw/sauerland-siegerland/kreis-siegen-wittgenstein/talsperren-leer-siegen-wittgenstein-obernau-100.amp"},
+  {d:"2026-04-17", t:"Obernautalsperre",     p:65.0, m:9.69, q:"https://wvs.nrw/talsperrenstaende-unter-normalniveau-wvs-ergreift-vorsorgemassnahmen/"},
+  {d:"2026-04-17", t:"Breitenbachtalsperre", p:73.0, m:5.69, q:"https://wvs.nrw/talsperrenstaende-unter-normalniveau-wvs-ergreift-vorsorgemassnahmen/"},
+  {d:"2026-06-08", t:"Obernautalsperre",     p:60.0, m:8.94, q:"https://wvs.nrw/talsperren-weiter-unter-normalniveau-sparen-von-trinkwasser-jetzt-besonders-wichtig/"},
+  {d:"2026-06-08", t:"Breitenbachtalsperre", p:70.0, m:5.46, q:"https://wvs.nrw/talsperren-weiter-unter-normalniveau-sparen-von-trinkwasser-jetzt-besonders-wichtig/"},
+  {d:"2026-07-23", t:"Obernautalsperre",     p:51.0, m:7.60, q:"https://wvs.nrw/kreis-siegen-wittgenstein-erlaesst-wasserentnahme-verbot-aus-fluessen-und-baechen-im-kreisgebiet/"},
+  {d:"2026-07-23", t:"Breitenbachtalsperre", p:62.0, m:4.84, q:"https://wvs.nrw/kreis-siegen-wittgenstein-erlaesst-wasserentnahme-verbot-aus-fluessen-und-baechen-im-kreisgebiet/"},
+  {d:"2026-08-21", t:"Obernautalsperre",     p:46.0, m:6.85, q:"https://wvs.nrw/sinkende-talsperrenstaende-kreis-erlaesst-trinkwasser-sparverordnung-auch-biedenkopf-untersagt-verschiedene-wassernutzungen/"},
+  {d:"2026-08-21", t:"Breitenbachtalsperre", p:56.0, m:4.37, q:"https://wvs.nrw/sinkende-talsperrenstaende-kreis-erlaesst-trinkwasser-sparverordnung-auch-biedenkopf-untersagt-verschiedene-wassernutzungen/"}
+];
+
+/* ---------- Daten zusammenfuehren ---------- */
+const amtlich = (typeof FUELLSTAENDE !== "undefined" ? FUELLSTAENDE : []).map(r => ({...r, amtlich:true}));
+const presse  = PRESSEWERTE.filter(p => !amtlich.some(a => a.d === p.d && a.t === p.t))
+                           .map(r => ({...r, amtlich:false}));
+const DATEN = [...amtlich, ...presse].sort((a,b) => a.d < b.d ? -1 : a.d > b.d ? 1 : 0);
+
+const COL = {Obernautalsperre:"#4ea1ff", Breitenbachtalsperre:"#38d9a9"};
+const TONCOL = {alarmierend:"#ff6b6b", besorgt:"#ffa94d", neutral:"#8fa3b8", beruhigend:"#51cf66"};
+const TONWERT = {alarmierend:-1, besorgt:-0.5, neutral:0, beruhigend:1};
+const ms = s => new Date(s + "T12:00:00Z").getTime();
+const fmt = s => s.split("-").reverse().join(".");
+
+if (!DATEN.length) {
+  const w = document.getElementById("nodata");
+  w.hidden = false;
+  w.textContent = "Die Datei daten.js wurde nicht gefunden oder ist leer. Bitte build_daten.py ausführen.";
+}
+
+/* ---------- Filterzustand ---------- */
+const jahre = [...new Set(DATEN.map(r => r.d.slice(0,4)))].sort();
+const alleJahre = [...new Set([...jahre, ...BERICHTE.map(b => b.d.slice(0,4)),
+                               ...EREIGNISSE.map(e => e.d.slice(0,4))])].sort();
+const state = {
+  von: alleJahre[0], bis: alleJahre[alleJahre.length-1],
+  dams: new Set(["Obernautalsperre","Breitenbachtalsperre"]),
+  tones: new Set(["alarmierend","besorgt","neutral","beruhigend"]),
+  glatt: 0, saisonDam: "Obernautalsperre", trend: true
+};
+
+const selVon = document.getElementById("von"), selBis = document.getElementById("bis");
+alleJahre.forEach(y => {
+  selVon.add(new Option(y, y)); selBis.add(new Option(y, y));
+});
+selVon.value = state.von; selBis.value = state.bis;
+
+const inRange = d => d.slice(0,4) >= state.von && d.slice(0,4) <= state.bis;
+const messwerte = () => DATEN.filter(r => inRange(r.d) && state.dams.has(r.t));
+const berichte  = () => BERICHTE.filter(b => inRange(b.d) && state.tones.has(b.ton));
+const ereignisse= () => EREIGNISSE.filter(e => inRange(e.d));
+
+/* gleitendes Mittel ueber n Stichtage je Talsperre */
+function glaetten(pts, n) {
+  if (!n) return pts;
+  return pts.map((p,i) => {
+    const von = Math.max(0, i - n + 1);
+    const teil = pts.slice(von, i + 1);
+    return {x:p.x, y:teil.reduce((s,q) => s + q.y, 0) / teil.length};
+  });
+}
+
+/* Trendgerade nach kleinsten Quadraten; spanne = [x0,x1] zeichnet ueber den vollen Zeitraum */
+function trendlinie(pts, spanne) {
+  const n = pts.length;
+  if (n < 2) return null;
+  const mx = pts.reduce((s,p) => s + p.x, 0) / n;
+  const my = pts.reduce((s,p) => s + p.y, 0) / n;
+  let oben = 0, unten = 0;
+  for (const p of pts) { oben += (p.x - mx) * (p.y - my); unten += (p.x - mx) ** 2; }
+  if (!unten) return null;
+  const m = oben / unten, b = my - m * mx;
+  const [x0, x1] = spanne ||
+    [Math.min(...pts.map(p => p.x)), Math.max(...pts.map(p => p.x))];
+  return {punkte:[{x:x0, y:m*x0 + b}, {x:x1, y:m*x1 + b}], proJahr:m * 31557600000};
+}
+
+/* Trendkanal: je eine Gerade durch die Jahreshoechst- und die Jahrestiefstwerte.
+   ponytail: Jahresbuckets statt Peak-Erkennung - der Fuellstand hat genau einen
+   Jahreszyklus (Fruehjahrsmaximum, Herbstminimum), mehr Verfahren braucht es nicht. */
+function kanal(pts) {
+  if (pts.length < 2) return {oben:null, unten:null};
+  const jahr = {};
+  for (const p of pts) (jahr[new Date(p.x).getFullYear()] ||= []).push(p);
+  const hoch = [], tief = [];
+  for (const gruppe of Object.values(jahr)) {
+    hoch.push(gruppe.reduce((a,b) => b.y > a.y ? b : a));
+    tief.push(gruppe.reduce((a,b) => b.y < a.y ? b : a));
+  }
+  const spanne = [Math.min(...pts.map(p => p.x)), Math.max(...pts.map(p => p.x))];
+  return {oben:trendlinie(hoch, spanne), unten:trendlinie(tief, spanne)};
+}
+
+const proJahrTxt = v =>
+  `${v >= 0 ? "+" : "−"}${Math.abs(v).toFixed(2).replace(".", ",")} %-Pkt./Jahr`;
+
+/* ---------- Diagramme ---------- */
+const charts = {};
+const gitter = {color:"#26374a"}, tick = {color:"#8fa3b8"};
+const basis = {responsive:true, maintainAspectRatio:false,
+  interaction:{mode:"nearest", intersect:false},
+  plugins:{legend:{labels:{color:"#e8eef5", boxWidth:12, usePointStyle:true}}}};
+
+function zeitAchse(titel) {
+  return {type:"linear", grid:gitter, title:{display:!!titel, text:titel, color:"#8fa3b8"},
+    ticks:{...tick, callback:v => new Date(v).toLocaleDateString("de-DE",
+      {month:"2-digit", year:"numeric"})}};
+}
+
+function zeichneMain() {
+  const ds = [];
+  for (const dam of state.dams) {
+    const pts = messwerte().filter(r => r.t === dam).map(r => ({x:ms(r.d), y:r.p}));
+    ds.push({label:dam, data:glaetten(pts, state.glatt), borderColor:COL[dam],
+      backgroundColor:COL[dam], borderWidth:2, pointRadius:0, pointHoverRadius:4, tension:.25});
+    if (state.trend) {
+      const k = kanal(pts);
+      const gerade = (t, name, dash) => ({
+        label:`${name} ${dam} (${proJahrTxt(t.proJahr)})`, data:t.punkte,
+        borderColor:COL[dam], backgroundColor:COL[dam], borderWidth:2,
+        borderDash:dash, pointRadius:0, pointHoverRadius:0, tension:0});
+      if (k.oben)  ds.push(gerade(k.oben,  "Höchststände", [8,4]));
+      if (k.unten) ds.push(gerade(k.unten, "Tiefststände", [2,4]));
+    }
+  }
+  ds.push({label:"Berichterstattung", type:"scatter",
+    data:berichte().map(b => ({x:ms(b.d), y:wertAm(b.d, "Obernautalsperre") ?? 50, b})),
+    pointStyle:"rectRot", pointRadius:9, pointHoverRadius:12,
+    backgroundColor:c => TONCOL[c.raw?.b?.ton] || "#8fa3b8",
+    borderColor:"#0f1720", borderWidth:1.5, showLine:false});
+
+  const opt = {...basis, scales:{x:zeitAchse(), y:{min:0, max:105, grid:gitter,
+      title:{display:true, text:"Füllgrad in %", color:"#8fa3b8"}, ticks:tick}},
+    plugins:{...basis.plugins, tooltip:{callbacks:{
+      title:i => new Date(i[0].parsed.x).toLocaleDateString("de-DE"),
+      label:c => c.raw.b ? [c.raw.b.t, "Tonalität: " + c.raw.b.ton]
+                         : `${c.dataset.label}: ${c.parsed.y.toFixed(1)} %`}}}};
+  render("cMain", "line", {datasets:ds}, opt);
+}
+
+function wertAm(datum, dam) {
+  const ziel = ms(datum);
+  let best = null, dist = Infinity;
+  for (const r of DATEN) {
+    if (r.t !== dam) continue;
+    const dd = Math.abs(ms(r.d) - ziel);
+    if (dd < dist) { dist = dd; best = r; }
+  }
+  return dist <= 45 * 864e5 ? best.p : null;
+}
+
+function zeichneSaison() {
+  const dam = state.saisonDam;
+  const proJahr = {};
+  DATEN.filter(r => r.t === dam && inRange(r.d)).forEach(r => {
+    const y = r.d.slice(0,4);
+    const tag = (new Date(r.d) - new Date(y + "-01-01")) / 864e5;
+    (proJahr[y] ||= []).push({x:tag, y:r.p});
+  });
+  const ys = Object.keys(proJahr).sort();
+  const ds = ys.map((y,i) => {
+    const hell = 25 + Math.round(55 * (i / Math.max(1, ys.length - 1)));
+    return {label:y, data:proJahr[y].sort((a,b) => a.x - b.x),
+      borderColor:`hsl(${dam === "Obernautalsperre" ? 210 : 165} 80% ${hell}%)`,
+      borderWidth:y === ys[ys.length-1] ? 3 : 1.6, pointRadius:0, tension:.3};
+  });
+  const monat = ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+  render("cSaison", "line", {datasets:ds}, {...basis,
+    scales:{x:{type:"linear", min:0, max:365, grid:gitter,
+        ticks:{...tick, stepSize:30.4, callback:v => monat[Math.round(v/30.4)] ?? ""}},
+      y:{min:0, max:105, grid:gitter, ticks:tick,
+        title:{display:true, text:"Füllgrad in %", color:"#8fa3b8"}}},
+    plugins:{...basis.plugins, tooltip:{callbacks:{
+      title:i => i[0].dataset.label, label:c => c.parsed.y.toFixed(1) + " %"}}}});
+}
+
+function zeichneJahr() {
+  const stat = {};
+  messwerte().forEach(r => {
+    const k = r.d.slice(0,4) + "|" + r.t;
+    (stat[k] ||= []).push(r.p);
+  });
+  const ys = [...new Set(Object.keys(stat).map(k => k.split("|")[0]))].sort();
+  const ds = [];
+  for (const dam of state.dams) {
+    ds.push({label:dam + " – Spanne Min/Max", data:ys.map(y => {
+        const v = stat[y + "|" + dam]; return v ? [Math.min(...v), Math.max(...v)] : null;}),
+      backgroundColor:COL[dam] + "66", borderColor:COL[dam], borderWidth:1, borderSkipped:false});
+    ds.push({label:dam + " – Mittel", type:"line", data:ys.map(y => {
+        const v = stat[y + "|" + dam];
+        return v ? v.reduce((a,b) => a + b, 0) / v.length : null;}),
+      borderColor:COL[dam], backgroundColor:COL[dam], borderWidth:0,
+      pointRadius:5, pointStyle:"circle", showLine:false});
+  }
+  render("cJahr", "bar", {labels:ys, datasets:ds}, {...basis,
+    scales:{x:{grid:gitter, ticks:tick}, y:{min:0, max:105, grid:gitter, ticks:tick,
+      title:{display:true, text:"Füllgrad in %", color:"#8fa3b8"}}},
+    plugins:{...basis.plugins, tooltip:{callbacks:{label:c =>
+      Array.isArray(c.raw) ? `${c.dataset.label}: ${c.raw[0].toFixed(1)} – ${c.raw[1].toFixed(1)} %`
+                           : `${c.dataset.label}: ${c.parsed.y.toFixed(1)} %`}}}});
+}
+
+function zeichneTon() {
+  const ys = [];
+  for (let y = +state.von; y <= +state.bis; y++) ys.push(String(y));
+  const tone = ["alarmierend","besorgt","neutral","beruhigend"].filter(t => state.tones.has(t));
+  const ds = tone.map(t => ({label:t, data:ys.map(y =>
+      berichte().filter(b => b.d.slice(0,4) === y && b.ton === t).length),
+    backgroundColor:TONCOL[t], stack:"s", borderWidth:0}));
+  ds.push({label:"Sentiment-Index", type:"line", yAxisID:"y2",
+    data:ys.map(y => {
+      const b = berichte().filter(x => x.d.slice(0,4) === y);
+      return b.length ? b.reduce((s,x) => s + TONWERT[x.ton], 0) / b.length : null;}),
+    borderColor:"#e8eef5", borderWidth:2, pointRadius:4, tension:.3, spanGaps:true});
+  render("cTon", "bar", {labels:ys, datasets:ds}, {...basis,
+    scales:{x:{grid:gitter, ticks:tick, stacked:true},
+      y:{stacked:true, beginAtZero:true, grid:gitter,
+         ticks:{...tick, precision:0}, title:{display:true, text:"Beiträge", color:"#8fa3b8"}},
+      y2:{position:"right", min:-1.1, max:1.1, grid:{display:false}, ticks:tick,
+         title:{display:true, text:"Sentiment-Index", color:"#8fa3b8"}}}});
+}
+
+function zeichneKorr() {
+  const pts = berichte().map(b => {
+    const p = wertAm(b.d, "Obernautalsperre");
+    return p == null ? null : {x:ms(b.d), y:p, b};
+  }).filter(Boolean);
+  render("cKorr", "scatter", {datasets:[{label:"Beitrag", data:pts, pointRadius:9,
+      pointHoverRadius:12, backgroundColor:c => TONCOL[c.raw?.b?.ton] || "#8fa3b8",
+      borderColor:"#0f1720", borderWidth:1.5}]},
+    {...basis, plugins:{...basis.plugins, legend:{display:false},
+      tooltip:{callbacks:{title:i => fmt(i[0].raw.b.d),
+        label:c => [c.raw.b.t, `Obernau: ${c.parsed.y.toFixed(1)} %`,
+                    `Tonalität: ${c.raw.b.ton}`]}}},
+     scales:{x:zeitAchse(), y:{min:0, max:105, grid:gitter, ticks:tick,
+       title:{display:true, text:"Füllgrad Obernautalsperre in %", color:"#8fa3b8"}}}});
+}
+
+function render(id, type, data, options) {
+  charts[id]?.destroy();
+  charts[id] = new Chart(document.getElementById(id), {type, data, options});
+}
+
+/* ---------- KPIs, Chronik, Tabelle ---------- */
+function zeichneKpis() {
+  const box = document.getElementById("kpis");
+  box.innerHTML = "";
+  for (const dam of ["Obernautalsperre","Breitenbachtalsperre"]) {
+    if (!state.dams.has(dam)) continue;
+    const v = messwerte().filter(r => r.t === dam);
+    if (!v.length) continue;
+    const letzt = v[v.length-1];
+    const min = v.reduce((a,b) => b.p < a.p ? b : a);
+    const max = v.reduce((a,b) => b.p > a.p ? b : a);
+    add(box, dam + " · zuletzt", letzt.p.toFixed(1) + " %",
+        `${fmt(letzt.d)} · ${letzt.m.toFixed(2)} Mio. m³`, COL[dam]);
+    add(box, dam + " · Tiefststand", min.p.toFixed(1) + " %", fmt(min.d), COL[dam]);
+    add(box, dam + " · Höchststand", max.p.toFixed(1) + " %", fmt(max.d), COL[dam]);
+  }
+  const b = berichte();
+  const idx = b.length ? b.reduce((s,x) => s + TONWERT[x.ton], 0) / b.length : 0;
+  add(box, "Sentiment-Index", (idx >= 0 ? "+" : "") + idx.toFixed(2),
+      `${b.length} Beiträge · −1 alarmierend … +1 beruhigend`,
+      idx < -0.5 ? TONCOL.alarmierend : idx < 0 ? TONCOL.besorgt : TONCOL.beruhigend);
+}
+function add(box, lbl, val, note, col) {
+  const d = document.createElement("div");
+  d.className = "kpi";
+  d.innerHTML = `<div class="lbl"></div><div class="val"></div><div class="note"></div>`;
+  d.querySelector(".lbl").textContent = lbl;
+  d.querySelector(".val").textContent = val;
+  d.querySelector(".val").style.color = col;
+  d.querySelector(".note").textContent = note;
+  box.appendChild(d);
+}
+
+function zeichneChronik() {
+  const eintraege = [
+    ...berichte().map(b => ({...b, art:"bericht"})),
+    ...ereignisse().map(e => ({...e, art:"ereignis"}))
+  ].sort((a,b) => a.d < b.d ? 1 : -1);
+  const ul = document.getElementById("chronik");
+  ul.innerHTML = "";
+  for (const e of eintraege) {
+    const li = document.createElement("li");
+    li.className = e.art === "ereignis" ? "ereignis" : e.ton;
+    const tonKlasse = e.art === "ereignis" ? "ereignis" : e.ton;
+    const label = e.art === "ereignis" ? "Ereignis" : e.ton;
+    li.innerHTML =
+      `<div class="date">${fmt(e.d)}<span class="tag ${tonKlasse}">${label}</span></div>
+       <div class="ttl"></div><div class="meta"></div>
+       ${e.zahlen && e.zahlen !== "—" ? `<span class="fig"></span>` : ""}
+       <div style="margin-top:5px"><a target="_blank" rel="noopener">Quelle öffnen ↗</a></div>`;
+    li.querySelector(".ttl").textContent = e.t;
+    li.querySelector(".meta").textContent =
+      e.art === "ereignis" ? e.q : `${e.medium} — ${e.kern}`;
+    if (li.querySelector(".fig")) li.querySelector(".fig").textContent = e.zahlen;
+    li.querySelector("a").href = e.u;
+    ul.appendChild(li);
+  }
+}
+
+function zeichneTabelle() {
+  const v = messwerte().slice().reverse();
+  const tb = document.getElementById("tbody");
+  tb.innerHTML = "";
+  document.getElementById("rowinfo").textContent =
+    `${v.length} Messpunkte im gewählten Zeitraum.`;
+  for (const r of v.slice(0, 800)) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td></td><td></td><td class="num"></td><td class="num"></td>
+                    <td><a target="_blank" rel="noopener">Bericht ↗</a></td>`;
+    const td = tr.children;
+    td[0].textContent = fmt(r.d);
+    td[1].textContent = r.t;
+    td[1].style.color = COL[r.t];
+    td[2].textContent = r.m.toFixed(2);
+    td[3].textContent = r.p.toFixed(1) + " %";
+    td[4].querySelector("a").href = r.q;
+    td[4].querySelector("a").textContent = r.amtlich ? "Amtlicher Bericht ↗" : "Pressequelle ↗";
+    tb.appendChild(tr);
+  }
+}
+
+/* ---------- Steuerung ---------- */
+function alles() {
+  if (typeof Chart === "undefined") {
+    const w = document.getElementById("nodata");
+    w.hidden = false;
+    w.textContent = "Die Diagrammbibliothek konnte nicht geladen werden (keine Internetverbindung). " +
+                    "Tabelle und Chronik funktionieren weiterhin.";
+  } else {
+    zeichneMain(); zeichneSaison(); zeichneJahr(); zeichneTon(); zeichneKorr();
+  }
+  zeichneKpis(); zeichneChronik(); zeichneTabelle();
+}
+
+selVon.onchange = () => { state.von = selVon.value;
+  if (state.von > state.bis) { state.bis = state.von; selBis.value = state.bis; } alles(); };
+selBis.onchange = () => { state.bis = selBis.value;
+  if (state.bis < state.von) { state.von = state.bis; selVon.value = state.von; } alles(); };
+document.getElementById("saisonDam").onchange = e => {
+  state.saisonDam = e.target.value; zeichneSaison(); };
+document.getElementById("glatt").oninput = e => {
+  state.glatt = +e.target.value;
+  document.getElementById("glattTxt").textContent =
+    state.glatt ? state.glatt + " Stichtage" : "aus";
+  zeichneMain();
+};
+document.getElementById("trendChip").onclick = e => {
+  state.trend = !state.trend;
+  e.currentTarget.setAttribute("aria-pressed", state.trend);
+  zeichneMain();
+};
+for (const btn of document.querySelectorAll("#dams .chip")) btn.onclick = () => {
+  const d = btn.dataset.dam;
+  state.dams.has(d) ? state.dams.delete(d) : state.dams.add(d);
+  if (!state.dams.size) state.dams.add(d);
+  btn.setAttribute("aria-pressed", state.dams.has(d));
+  alles();
+};
+for (const btn of document.querySelectorAll("#tones .chip")) btn.onclick = () => {
+  const t = btn.dataset.tone;
+  state.tones.has(t) ? state.tones.delete(t) : state.tones.add(t);
+  btn.setAttribute("aria-pressed", state.tones.has(t));
+  alles();
+};
+
+alles();
+</script>
+</body>
+</html>

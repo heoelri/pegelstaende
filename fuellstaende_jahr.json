@@ -1,0 +1,268 @@
+[
+ {
+  "datum": "2025-11-01",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 48.59,
+  "inhalt_mio_m3": 3.79,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-11-01",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 52.15,
+  "inhalt_mio_m3": 7.77,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-11-15",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 49.97,
+  "inhalt_mio_m3": 3.9,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-11-15",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 51.07,
+  "inhalt_mio_m3": 7.61,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-12-01",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 49.41,
+  "inhalt_mio_m3": 3.85,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-12-01",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 49.13,
+  "inhalt_mio_m3": 7.32,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-12-15",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 52.72,
+  "inhalt_mio_m3": 4.11,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2025-12-15",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 50.32,
+  "inhalt_mio_m3": 7.5,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-01-01",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 52.92,
+  "inhalt_mio_m3": 4.13,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-01-01",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 49.13,
+  "inhalt_mio_m3": 7.32,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-01-15",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 53.13,
+  "inhalt_mio_m3": 4.14,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-01-15",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 48.04,
+  "inhalt_mio_m3": 7.16,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-02-01",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 58.72,
+  "inhalt_mio_m3": 4.58,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-02-01",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 51.6,
+  "inhalt_mio_m3": 7.69,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-02-15",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 61.94,
+  "inhalt_mio_m3": 4.83,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-02-15",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 54.25,
+  "inhalt_mio_m3": 8.08,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-03-01",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 73.23,
+  "inhalt_mio_m3": 5.71,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-03-01",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 64.66,
+  "inhalt_mio_m3": 9.63,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-03-15",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 73.59,
+  "inhalt_mio_m3": 5.74,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-03-15",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 64.92,
+  "inhalt_mio_m3": 9.67,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-04-01",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 73.46,
+  "inhalt_mio_m3": 5.73,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-04-01",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 64.66,
+  "inhalt_mio_m3": 9.63,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-04-15",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 73.0,
+  "inhalt_mio_m3": 5.69,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-04-15",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 64.39,
+  "inhalt_mio_m3": 9.59,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-05-01",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 71.5,
+  "inhalt_mio_m3": 5.58,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-05-01",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 62.39,
+  "inhalt_mio_m3": 9.3,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-05-15",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 71.62,
+  "inhalt_mio_m3": 5.59,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-05-15",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 61.02,
+  "inhalt_mio_m3": 9.09,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-06-01",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 70.24,
+  "inhalt_mio_m3": 5.48,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-06-01",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 59.76,
+  "inhalt_mio_m3": 8.9,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-06-15",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 69.08,
+  "inhalt_mio_m3": 5.39,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-06-15",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 58.01,
+  "inhalt_mio_m3": 8.64,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-07-01",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 67.12,
+  "inhalt_mio_m3": 5.24,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-07-01",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 55.11,
+  "inhalt_mio_m3": 8.21,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-07-15",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 64.13,
+  "inhalt_mio_m3": 5.0,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-07-15",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 52.3,
+  "inhalt_mio_m3": 7.79,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-08-01",
+  "talsperre": "Breitenbachtalsperre",
+  "fuellgrad_pct": 60.38,
+  "inhalt_mio_m3": 4.71,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ },
+ {
+  "datum": "2026-08-01",
+  "talsperre": "Obernautalsperre",
+  "fuellgrad_pct": 48.91,
+  "inhalt_mio_m3": 7.29,
+  "quelle": "https://www.bra.nrw.de/system/files/media/document/file/2026-08-01_talsperrenfuellstaende.pdf"
+ }
+]

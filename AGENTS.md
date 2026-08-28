@@ -1,0 +1,58 @@
+# Agent instructions
+
+## Data refresh
+
+This is an unofficial, independent visualization using only publicly available
+data. Never imply affiliation with WVS or a public authority. Keep that
+disclaimer prominent in `index.html` and `README.md`.
+
+Use the smallest refresh path:
+
+1. Set the operating year to the current year, or the next year in November
+   and December.
+2. Run `python .\talsperren_jahrestabelle.py <operating-year>`.
+3. Confirm `fuellstaende_jahr.csv` is non-empty and its newest rows match the
+   linked BRA PDF.
+4. Run `python .\build_daten.py`.
+5. Search WVS for publications newer than the latest `BERICHTE` entry.
+6. Add only relevant, source-backed items to `PRESSEWERTE`, `BERICHTE`, and
+   `EREIGNISSE` in `index.html`.
+
+Do not run `talsperren_all.py` for a routine refresh. It scans the historical
+archive and is only needed when BRA adds or changes older individual PDFs.
+
+## Source rules
+
+- Prefer the Bezirksregierung Arnsberg PDF for exact official measurements.
+- Use WVS or authority publications for newer rounded values and measures.
+- Every value and event must link directly to its public original source.
+- Do not use search-result summaries as evidence; open and verify the source.
+- Do not bypass paywalls, authentication, robots restrictions, or access
+  controls.
+- If only a percentage is published, calculate volume as `percentage × 14.9`
+  for Obernau or `percentage × 7.8` for Breitenbach, divided by 100 and rounded
+  to two decimals.
+- Do not duplicate a press value when `daten.js` already contains an official
+  value for the same date and reservoir.
+- Preserve known gaps instead of interpolating or inventing measurements.
+
+## Page updates
+
+When new data extends coverage, update the latest dates in the footer. Add a
+report only when it materially changes the water-supply story; routine
+measurement updates belong in `daten.js`, not `BERICHTE`.
+
+Keep edits surgical. Do not add frameworks, dependencies, generated reports,
+or new abstractions.
+
+## Checks
+
+Run:
+
+```powershell
+node .\test_trend.js
+python -m py_compile .\talsperren_all.py .\talsperren_jahrestabelle.py .\build_daten.py
+```
+
+Also confirm the newest date and both reservoir names occur in `daten.js`, and
+that inline JavaScript from `index.html` passes `node --check`.
