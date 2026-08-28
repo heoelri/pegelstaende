@@ -54,3 +54,19 @@ Die Daten können Lücken, nachträgliche Änderungen oder Übertragungsfehler
 enthalten. Die Tonalität ist eine manuelle, qualitative Einordnung und keine
 amtliche oder objektiv messbare Kennzahl. Dieses Projekt ersetzt keine
 behördliche Auskunft zur Trinkwasserversorgung.
+
+## Quellen und Rechte
+
+Die vollständige Einordnung der Quellen, Nutzungsbedingungen und Lizenzen steht
+in [`SOURCES.md`](SOURCES.md). Die Anwendung übernimmt keine fremden Bilder oder
+vollständigen Texte, sondern veröffentlicht Messwerte und knapp paraphrasierte
+Tatsachen mit direktem Link zur Originalquelle.
+
+Für die amtliche Messreihe wurde keine ausdrückliche Open-Data-Lizenz gefunden.
+Die Veröffentlichung einzelner Tatsachen ist von der Übernahme geschützter
+Texte oder Datenbanken zu unterscheiden; für rechtssichere Weiterverwendung der
+gesamten Reihe sollte die Bezirksregierung Arnsberg die Nutzung bestätigen.
+
+Das Repository enthält derzeit keine Projektlizenz. Damit wird keine allgemeine
+Erlaubnis zur Weiterverwendung des hier erstellten Codes und der redaktionellen
+Zusammenstellung erteilt.
