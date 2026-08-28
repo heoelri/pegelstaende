@@ -45,6 +45,8 @@ measurement updates belong in `daten.js`, not `BERICHTE`.
 Keep edits surgical. Do not add frameworks, dependencies, generated reports,
 or new abstractions.
 
+Do not add artificial line breaks to prose. Keep each paragraph or list item on one physical line unless the format requires otherwise.
+
 ## Checks
 
 Run:
