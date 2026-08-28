@@ -8,7 +8,8 @@ Das ersetzt keine Zeitreihe, schliesst aber Stuetzpunkte in der Luecke.
 import json, os, re, sys, time, urllib.request
 
 sys.stdout.reconfigure(encoding="utf-8")
-CACHE = "cache_wvsw"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CACHE = os.path.join(ROOT, ".cache", "cache_wvsw")
 os.makedirs(CACHE, exist_ok=True)
 UA = {"User-Agent": "Mozilla/5.0 (Pegelstaende-Recherche)"}
 
@@ -55,7 +56,7 @@ def text_aus(daten, url):
 
 
 def main():
-    rows = json.load(open("cdx_wvsw.json"))
+    rows = json.load(open(os.path.join(ROOT, "research", "cdx_wvsw.json")))
     kandidaten = [(r[1], r[2]) for r in rows
                   if r[4] == "200"
                   and re.search(r"\.(html?|pdf|swf)$|/$", r[2], re.I)
@@ -92,7 +93,8 @@ def main():
     for f in eindeutig:
         print(f"[{f['ts'][:8]}] {f['wert']}  {f['url'].rsplit('/', 1)[-1][:40]}")
         print(f"    ...{f['umfeld'][:300]}...\n")
-    json.dump(eindeutig, open("wvsw_funde.json", "w", encoding="utf-8"), indent=1)
+    json.dump(eindeutig, open(os.path.join(ROOT, "research", "wvsw_funde.json"),
+                             "w", encoding="utf-8"), indent=1)
 
 
 if __name__ == "__main__":

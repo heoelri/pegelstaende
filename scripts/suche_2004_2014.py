@@ -4,9 +4,10 @@ Die Indexseite von 2007 belegt die Dateinamen (Schema JJ_MM_TT.html unter dem
 Pfad .../aufbau/..., ab 09/2007 .xls). Offen ist, ob sie irgendwo archiviert sind.
 Geprueft werden: Wayback (beide Pfadvarianten, je Jahr) und Common Crawl.
 """
-import json, sys, time, urllib.parse, urllib.request
+import json, pathlib, sys, time, urllib.parse, urllib.request
 
 sys.stdout.reconfigure(encoding="utf-8")
+RESEARCH = pathlib.Path(__file__).resolve().parent.parent / "research"
 UA = {"User-Agent": "Mozilla/5.0 (Pegelstaende-Recherche)"}
 ALT = "dieBezirksregierung/aufgabenAufbau/abteilungen/abteilung5/dezernat54/talsperren/fuellstaende"
 NEU = "dieBezirksregierung/aufbau/abteilungen/abteilung5/dezernat54/talsperren/fuellstaende"
@@ -93,6 +94,6 @@ if __name__ == "__main__":
     cc = common_crawl()
     json.dump({"wayback_jahre": {str(k): v for k, v in jahre.items()},
                "bra_vor_2015": bra, "common_crawl": cc},
-              open("suche_2004_2014.json", "w", encoding="utf-8"), indent=1)
+              open(RESEARCH / "suche_2004_2014.json", "w", encoding="utf-8"), indent=1)
     print(f"\nErgebnis: Wayback-Jahresdateien {sum(len(v) for v in jahre.values())}, "
           f"bra.nrw.de vor 2015 {len(bra)}, Common Crawl {len(cc)}")

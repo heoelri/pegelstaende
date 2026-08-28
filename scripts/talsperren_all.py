@@ -8,7 +8,9 @@ import io, json, re, sys, urllib.parse, urllib.request, pathlib, time
 
 sys.stdout.reconfigure(encoding="utf-8")
 UA = {"User-Agent": "Mozilla/5.0 (Pegelstaende-Recherche)"}
-CACHE = pathlib.Path("cache"); CACHE.mkdir(exist_ok=True)
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+DATA = ROOT / "data"
+CACHE = ROOT / ".cache" / "cache"; CACHE.mkdir(parents=True, exist_ok=True)
 BASE = ("https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/"
         "wasserwirtschaft-und-gewaesserschutz/talsperren/talsperrenfuellstaende-")
 
@@ -157,12 +159,12 @@ def main():
         if k not in seen:
             seen.add(k); uniq.append(r)
 
-    with open("fuellstaende.csv", "w", encoding="utf8") as f:
+    with open(DATA / "fuellstaende.csv", "w", encoding="utf8") as f:
         f.write("datum;talsperre;stauraum_mio_m3;inhalt_mio_m3;fuellgrad_pct;quelle\n")
         for r in uniq:
             f.write(";".join(str(r[k]) for k in ("datum", "talsperre", "stauraum_mio_m3",
                     "inhalt_mio_m3", "fuellgrad_pct", "quelle")) + "\n")
-    pathlib.Path("fuellstaende.json").write_text(
+    (DATA / "fuellstaende.json").write_text(
         json.dumps(uniq, indent=1, ensure_ascii=False), encoding="utf8")
 
     years = sorted({r["datum"][:4] for r in uniq})

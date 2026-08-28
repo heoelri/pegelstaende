@@ -4,7 +4,9 @@ import html, json, re, sys, urllib.parse, urllib.request, pathlib, time
 
 sys.stdout.reconfigure(encoding="utf-8")
 UA = {"User-Agent": "Mozilla/5.0 (Pegelstaende-Recherche)"}
-CACHE = pathlib.Path("cache"); CACHE.mkdir(exist_ok=True)
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+DATA = ROOT / "data"
+CACHE = ROOT / ".cache" / "cache"; CACHE.mkdir(parents=True, exist_ok=True)
 
 
 def get(url, tries=3):
@@ -81,7 +83,7 @@ def main():
         print(f"  {datum}: " + "  ".join(f"{k}={v['fuellgrad_pct']}%" for k, v in got.items()))
 
     print(f"\n{len(rows)} historische Datenpunkte, {len(misses)} ohne Treffer")
-    pathlib.Path("fuellstaende_alt.json").write_text(
+    (DATA / "fuellstaende_alt.json").write_text(
         json.dumps(rows, indent=1, ensure_ascii=False), encoding="utf8")
 
 

@@ -1,7 +1,8 @@
 """Wayback-CDX mit SERVERSEITIGEM Filter - sonst schneidet das Limit vor dem Filtern ab."""
-import json, urllib.parse, urllib.request
+import json, pathlib, urllib.parse, urllib.request
 
 CDX = "http://web.archive.org/cdx/search/cdx"
+RESEARCH = pathlib.Path(__file__).resolve().parent.parent / "research"
 
 
 def cdx(url, filt=None, limit=2000):
@@ -39,4 +40,4 @@ for url, filt in ABFRAGEN:
         alle[r[2]] = r
 
 print(f"\nGesamt {len(alle)} eindeutige URLs")
-json.dump(list(alle.values()), open("kandidaten_alt.json", "w", encoding="utf-8"), indent=1)
+json.dump(list(alle.values()), open(RESEARCH / "kandidaten_alt.json", "w", encoding="utf-8"), indent=1)

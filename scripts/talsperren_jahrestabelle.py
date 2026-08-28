@@ -14,12 +14,14 @@ den Rohtext - deshalb pdfplumber statt pypdf.
 
 Ergebnis: fuellstaende_jahr.csv / .json (Schema wie fuellstaende.csv)
 """
-import csv, io, json, re, sys, urllib.parse, urllib.request
+import csv, io, json, pathlib, re, sys, urllib.parse, urllib.request
 
 import pdfplumber
 
 sys.stdout.reconfigure(encoding="utf-8")
 
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+DATA = ROOT / "data"
 BASIS = "https://www.bra.nrw.de/system/files/media/document/file/"
 SAMMELSEITE = ("https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/"
                "wasserwirtschaft-und-gewaesserschutz/talsperren/"
@@ -125,12 +127,13 @@ def main(jahre):
             print(f"   {z['datum']}  {z['talsperre']:22s} "
                   f"{z['fuellgrad_pct']:6.2f} %  {z['inhalt_mio_m3']:6.2f} Mio m3")
 
-    with open("fuellstaende_jahr.csv", "w", newline="", encoding="utf-8") as f:
+    with open(DATA / "fuellstaende_jahr.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, delimiter=";", fieldnames=[
             "datum", "talsperre", "fuellgrad_pct", "inhalt_mio_m3", "quelle"])
         w.writeheader()
         w.writerows(zeilen)
-    json.dump(zeilen, open("fuellstaende_jahr.json", "w", encoding="utf-8"), indent=1)
+    json.dump(zeilen, open(DATA / "fuellstaende_jahr.json",
+                           "w", encoding="utf-8"), indent=1)
     print("-> fuellstaende_jahr.csv")
 
 

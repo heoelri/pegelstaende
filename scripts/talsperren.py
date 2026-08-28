@@ -3,7 +3,9 @@ extrahiert die Zeitreihe fuer Obernau- und Breitenbachtalsperre."""
 import io, json, re, sys, urllib.parse, urllib.request, pathlib, time
 
 UA = {"User-Agent": "Mozilla/5.0 (Pegelstaende-Recherche)"}
-CACHE = pathlib.Path("cache"); CACHE.mkdir(exist_ok=True)
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+DATA = ROOT / "data"
+CACHE = ROOT / ".cache" / "cache"; CACHE.mkdir(parents=True, exist_ok=True)
 
 
 def get(url, tries=3):
@@ -93,9 +95,9 @@ def main():
             rows.append({"datum": d, "talsperre": dam, **v, "quelle": u})
         print(f"  {d}: " + "  ".join(f"{k}={v['fuellgrad_pct']}%" for k, v in parsed.items()))
 
-    pathlib.Path("fuellstaende_wayback.json").write_text(
+    (DATA / "fuellstaende_wayback.json").write_text(
         json.dumps(rows, indent=1, ensure_ascii=False), encoding="utf8")
-    with open("fuellstaende_wayback.csv", "w", encoding="utf8") as f:
+    with open(DATA / "fuellstaende_wayback.csv", "w", encoding="utf8") as f:
         f.write("datum;talsperre;stauraum_mio_m3;inhalt_mio_m3;fuellgrad_pct;quelle\n")
         for r in rows:
             f.write(";".join(str(r[k]) for k in

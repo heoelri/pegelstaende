@@ -4,9 +4,11 @@ import csv, glob, json, pathlib, sys
 sys.stdout.reconfigure(encoding="utf-8")
 
 NAMEN = {"Obernau": "Obernautalsperre", "Breitenbach": "Breitenbachtalsperre"}
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+DATA = ROOT / "data"
 best = {}   # (Datum, Talsperre) -> Datensatz
 
-for pfad in sorted(glob.glob("fuellstaende*.csv")):
+for pfad in sorted(glob.glob(str(DATA / "fuellstaende*.csv"))):
     with open(pfad, encoding="utf8") as f:
         for r in csv.DictReader(f, delimiter=";"):
             t = NAMEN.get(r["talsperre"], r["talsperre"])
@@ -19,7 +21,7 @@ for pfad in sorted(glob.glob("fuellstaende*.csv")):
     print(f"gelesen: {pfad}")
 
 rows = sorted(best.values(), key=lambda r: (r["d"], r["t"]))
-pathlib.Path("daten.js").write_text(
+(ROOT / "daten.js").write_text(
     "// Amtliche Fuellstaende der Bezirksregierung Arnsberg (Dezernat 54 Wasserwirtschaft),\n"
     "// automatisch extrahiert aus der Berichtsreihe 'Talsperrenfuellstaende' (Stichtage 1. und 15.).\n"
     "const FUELLSTAENDE = " + json.dumps(rows, ensure_ascii=False, separators=(",", ":")) + ";\n",

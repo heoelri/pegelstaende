@@ -23,15 +23,23 @@ berichtete Einzelwerte, Ereignisse und Medienbeiträge stehen direkt in
 `index.html`. Die Seite läuft ohne Server; `index.html` kann direkt im Browser
 geöffnet werden. Nur Chart.js wird zur Laufzeit von einem CDN geladen.
 
+## Verzeichnisstruktur
+
+- `index.html`, `daten.js`: veröffentlichte Website
+- `data/`: extrahierte Messreihen
+- `scripts/`: Datenbeschaffung und Aufbereitung
+- `research/`: Ergebnisse der historischen Quellensuche
+- `tests/`: kleine ausführbare Prüfungen
+
 ## Daten aktualisieren
 
 Die Python-Skripte lesen öffentlich erreichbare Veröffentlichungen der
 Bezirksregierung Arnsberg und historische Seiten aus dem Internet Archive.
 
 ```powershell
-python .\talsperren_all.py
-python .\talsperren_jahrestabelle.py 2026
-python .\build_daten.py
+python .\scripts\talsperren_all.py
+python .\scripts\talsperren_jahrestabelle.py 2026
+python .\scripts\build_daten.py
 ```
 
 Aktuelle WVS-Pressewerte und neue Ereignisse werden nach Prüfung der

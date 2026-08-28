@@ -10,15 +10,15 @@ Use the smallest refresh path:
 
 1. Set the operating year to the current year, or the next year in November
    and December.
-2. Run `python .\talsperren_jahrestabelle.py <operating-year>`.
-3. Confirm `fuellstaende_jahr.csv` is non-empty and its newest rows match the
+2. Run `python .\scripts\talsperren_jahrestabelle.py <operating-year>`.
+3. Confirm `data\fuellstaende_jahr.csv` is non-empty and its newest rows match the
    linked BRA PDF.
-4. Run `python .\build_daten.py`.
+4. Run `python .\scripts\build_daten.py`.
 5. Search WVS for publications newer than the latest `BERICHTE` entry.
 6. Add only relevant, source-backed items to `PRESSEWERTE`, `BERICHTE`, and
    `EREIGNISSE` in `index.html`.
 
-Do not run `talsperren_all.py` for a routine refresh. It scans the historical
+Do not run `scripts\talsperren_all.py` for a routine refresh. It scans the historical
 archive and is only needed when BRA adds or changes older individual PDFs.
 
 ## Source rules
@@ -50,8 +50,8 @@ or new abstractions.
 Run:
 
 ```powershell
-node .\test_trend.js
-python -m py_compile .\talsperren_all.py .\talsperren_jahrestabelle.py .\build_daten.py
+node .\tests\test_trend.js
+python -m py_compile .\scripts\talsperren_all.py .\scripts\talsperren_jahrestabelle.py .\scripts\build_daten.py
 ```
 
 Also confirm the newest date and both reservoir names occur in `daten.js`, and

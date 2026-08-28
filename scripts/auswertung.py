@@ -1,7 +1,9 @@
 """Kurzauswertung der zusammengefuehrten Reihe fuer die textliche Zusammenfassung."""
 import json
+from pathlib import Path
 
-s = open("daten.js", encoding="utf-8").read()
+ROOT = Path(__file__).resolve().parent.parent
+s = (ROOT / "daten.js").read_text(encoding="utf-8")
 D = json.loads(s[s.index("["):s.rindex("]") + 1])
 print("Messpunkte:", len(D), "|", D[0]["d"], "bis", D[-1]["d"])
 

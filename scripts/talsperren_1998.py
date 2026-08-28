@@ -11,7 +11,9 @@ Ergebnis: fuellstaende_alt.csv / .json  (Schema wie fuellstaende.csv)
 import csv, html, json, os, re, sys, time, urllib.parse, urllib.request
 
 CDX = "http://web.archive.org/cdx/search/cdx"
-CACHE = "cache_alt"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CACHE = os.path.join(ROOT, ".cache", "cache_alt")
+DATA = os.path.join(ROOT, "data")
 STAURAUM = {"Obernautalsperre": 14.9, "Breitenbachtalsperre": 7.8}
 os.makedirs(CACHE, exist_ok=True)
 
@@ -147,12 +149,13 @@ def main():
         print("je Jahr:", dict(sorted(jahre.items())))
 
     # gleiches Schema wie fuellstaende.csv, damit build_daten.py es ohne Sonderfall liest
-    with open("fuellstaende_alt.csv", "w", newline="", encoding="utf-8") as f:
+    with open(os.path.join(DATA, "fuellstaende_alt.csv"), "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, delimiter=";", fieldnames=[
             "datum", "talsperre", "fuellgrad_pct", "inhalt_mio_m3", "quelle"])
         w.writeheader()
         w.writerows(zeilen)
-    json.dump(zeilen, open("fuellstaende_alt.json", "w", encoding="utf-8"), indent=1)
+    json.dump(zeilen, open(os.path.join(DATA, "fuellstaende_alt.json"),
+                           "w", encoding="utf-8"), indent=1)
     print("-> fuellstaende_alt.csv")
 
 
