@@ -9,6 +9,13 @@ new Function(js); // Syntaxpruefung des gesamten SPA-Skripts
 const hol = name => js.match(new RegExp(`function ${name}\\([\\s\\S]*?\\n}`))[0];
 const {trendlinie, kanal} = new Function(
   `${hol("trendlinie")}\n${hol("kanal")}\nreturn {trendlinie, kanal};`)();
+const {saisonNormal, korrWert} = new Function(
+  `const ms = s => new Date(s + "T12:00:00Z").getTime();
+   ${hol("median")}
+   ${hol("saisonNormal")}
+   ${hol("datensatzAm")}
+   ${hol("korrWert")}
+   return {saisonNormal, korrWert};`)();
 
 const JAHR = 31557600000, tag = (y, m, d) => Date.UTC(y, m - 1, d);
 
@@ -54,4 +61,26 @@ const einJahr = D.filter(r => r.t === "Obernautalsperre" && r.d.startsWith("2020
                  .map(r => ({x:Date.parse(r.d), y:r.p}));
 assert.strictEqual(kanal(einJahr).oben, null);
 
-console.log("alle Trend-Tests bestanden");
+// 6) Saisonnormal: gleicher Halbmonat, nur amtliche Vorjahre
+const normal = saisonNormal(
+  {d:"2022-08-21", t:"Obernautalsperre", p:50},
+  [
+    {d:"2020-08-15", t:"Obernautalsperre", p:60, amtlich:true},
+    {d:"2021-08-20", t:"Obernautalsperre", p:80, amtlich:true},
+    {d:"2021-08-20", t:"Obernautalsperre", p:99, amtlich:false},
+    {d:"2021-08-01", t:"Obernautalsperre", p:10, amtlich:true}
+  ]);
+assert.deepStrictEqual(normal, {wert:70, n:2});
+
+// 7) Korrelationswert folgt der Auswahl; gemeinsam nach 22,7 Mio. m3 gewichtet
+const paar = [
+  {d:"2020-01-01", t:"Obernautalsperre", p:50, m:7.45},
+  {d:"2020-01-01", t:"Breitenbachtalsperre", p:50, m:3.9}
+];
+assert.strictEqual(korrWert("2020-01-01", ["Breitenbachtalsperre"], paar), 50);
+assert.ok(Math.abs(korrWert("2020-01-01",
+  ["Obernautalsperre", "Breitenbachtalsperre"], paar) - 50) < 0.001);
+assert.strictEqual(korrWert("2020-01-01",
+  ["Obernautalsperre", "Breitenbachtalsperre"], paar.slice(0, 1)), null);
+
+console.log("alle Tests bestanden");

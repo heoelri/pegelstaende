@@ -187,8 +187,9 @@ footer li{margin-bottom:5px}
 
     <section class="card">
       <h2>Füllstand und Tonalität</h2>
-      <p class="sub">Jeder Beitrag als Punkt: X = Datum, Y = Füllstand der Obernautalsperre zu diesem
-         Zeitpunkt. Zeigt, ab welchem Füllstand die Berichterstattung kippt.</p>
+      <p class="sub">Jeder Beitrag als Punkt: X = Datum, Y = Füllstand der gewählten Talsperre.
+         Sind beide gewählt, wird der gemeinsame Füllgrad nach Stauraum gewichtet. Zeigt, ab welchem
+         Füllstand die Berichterstattung kippt.</p>
       <div class="wrap sm"><canvas id="cKorr"></canvas></div>
     </section>
   </div>
@@ -225,6 +226,8 @@ footer li{margin-bottom:5px}
       <a href="https://www.bra.nrw.de/umwelt-gesundheit-arbeitsschutz/umwelt/wasserwirtschaft-und-gewaesserschutz/talsperren" target="_blank" rel="noopener">bra.nrw.de</a>.
       Werte automatisiert aus den amtlichen PDF- bzw. HTML-Berichten extrahiert; jede Zeile ist in der
       Tabelle einzeln auf ihr Quelldokument verlinkt.</li>
+    <li><strong>Saisonnormal:</strong> Median der amtlichen Vorjahreswerte aus demselben Halbmonat.
+      Für die Breitenbachtalsperre werden wegen der Stauzielabsenkung nur Werte ab 2016 verwendet.</li>
     <li><strong>Aktuelle Werte 2026 und Niederschlagsdaten:</strong> Wasserverband Siegen-Wittgenstein —
       <a href="https://wvs.nrw/" target="_blank" rel="noopener">wvs.nrw</a>, Pressemitteilungen vom
       17.04.2026, 08.06.2026, 23.07.2026 und 21.08.2026.</li>
@@ -431,6 +434,24 @@ function kanal(pts) {
   return {oben:trendlinie(hoch, spanne), unten:trendlinie(tief, spanne)};
 }
 
+function median(werte) {
+  const v = werte.slice().sort((a,b) => a - b);
+  const mitte = Math.floor(v.length / 2);
+  return v.length % 2 ? v[mitte] : (v[mitte - 1] + v[mitte]) / 2;
+}
+
+function saisonNormal(r, daten = DATEN) {
+  const [jahr, monat, tag] = r.d.split("-").map(Number);
+  const halbmonat = tag < 15 ? 0 : 1;
+  const werte = daten.filter(x => {
+    const [xJahr, xMonat, xTag] = x.d.split("-").map(Number);
+    return x.amtlich && x.t === r.t && xJahr < jahr && xMonat === monat &&
+      (xTag < 15 ? 0 : 1) === halbmonat &&
+      (r.t !== "Breitenbachtalsperre" || xJahr >= 2016);
+  }).map(x => x.p);
+  return werte.length ? {wert:median(werte), n:werte.length} : null;
+}
+
 const proJahrTxt = v =>
   `${v >= 0 ? "+" : "−"}${Math.abs(v).toFixed(2).replace(".", ",")} %-Pkt./Jahr`;
 
@@ -478,15 +499,30 @@ function zeichneMain() {
   render("cMain", "line", {datasets:ds}, opt);
 }
 
-function wertAm(datum, dam) {
+function datensatzAm(datum, dam, daten = DATEN) {
   const ziel = ms(datum);
   let best = null, dist = Infinity;
-  for (const r of DATEN) {
+  for (const r of daten) {
     if (r.t !== dam) continue;
     const dd = Math.abs(ms(r.d) - ziel);
     if (dd < dist) { dist = dd; best = r; }
   }
-  return dist <= 45 * 864e5 ? best.p : null;
+  return dist <= 45 * 864e5 ? best : null;
+}
+
+function wertAm(datum, dam) {
+  return datensatzAm(datum, dam)?.p ?? null;
+}
+
+function korrWert(datum, dams, daten = DATEN) {
+  if (dams.length === 1) return datensatzAm(datum, dams[0], daten)?.p ?? null;
+  // ponytail: gemeinsames Datum per Scan; bei deutlich mehr als 800 Werten nach Datum indexieren.
+  const gemeinsam = daten.filter(r => r.t === dams[0] &&
+    dams.every(d => daten.some(x => x.d === r.d && x.t === d)));
+  const erster = datensatzAm(datum, dams[0], gemeinsam);
+  if (!erster) return null;
+  return dams.reduce((sum, d) =>
+    sum + daten.find(x => x.d === erster.d && x.t === d).m, 0) / 22.7 * 100;
 }
 
 function zeichneSaison() {
@@ -561,8 +597,10 @@ function zeichneTon() {
 }
 
 function zeichneKorr() {
+  const dams = [...state.dams];
+  const name = dams.length === 1 ? dams[0] : "Gemeinsamer Füllgrad";
   const pts = berichte().map(b => {
-    const p = wertAm(b.d, "Obernautalsperre");
+    const p = korrWert(b.d, dams);
     return p == null ? null : {x:ms(b.d), y:p, b};
   }).filter(Boolean);
   render("cKorr", "scatter", {datasets:[{label:"Beitrag", data:pts, pointRadius:9,
@@ -570,10 +608,10 @@ function zeichneKorr() {
       borderColor:"#0f1720", borderWidth:1.5}]},
     {...basis, plugins:{...basis.plugins, legend:{display:false},
       tooltip:{callbacks:{title:i => fmt(i[0].raw.b.d),
-        label:c => [c.raw.b.t, `Obernau: ${c.parsed.y.toFixed(1)} %`,
+        label:c => [c.raw.b.t, `${name}: ${c.parsed.y.toFixed(1)} %`,
                     `Tonalität: ${c.raw.b.ton}`]}}},
      scales:{x:zeitAchse(), y:{min:0, max:105, grid:gitter, ticks:tick,
-       title:{display:true, text:"Füllgrad Obernautalsperre in %", color:"#8fa3b8"}}}});
+       title:{display:true, text:`${name} in %`, color:"#8fa3b8"}}}});
 }
 
 function render(id, type, data, options) {
@@ -594,6 +632,14 @@ function zeichneKpis() {
     const max = v.reduce((a,b) => b.p > a.p ? b : a);
     add(box, dam + " · zuletzt", letzt.p.toFixed(1) + " %",
         `${fmt(letzt.d)} · ${letzt.m.toFixed(2)} Mio. m³`, COL[dam]);
+    const normal = saisonNormal(letzt);
+    if (normal) {
+      const diff = letzt.p - normal.wert;
+      add(box, dam + " · zum Saisonnormal",
+          `${diff >= 0 ? "+" : "−"}${Math.abs(diff).toFixed(1)} %-Pkt.`,
+          `Median ${normal.wert.toFixed(1)} % · ${normal.n} Vorjahreswerte`,
+          diff < 0 ? TONCOL.alarmierend : diff > 0 ? TONCOL.beruhigend : TONCOL.neutral);
+    }
     add(box, dam + " · Tiefststand", min.p.toFixed(1) + " %", fmt(min.d), COL[dam]);
     add(box, dam + " · Höchststand", max.p.toFixed(1) + " %", fmt(max.d), COL[dam]);
   }
