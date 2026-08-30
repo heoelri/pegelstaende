@@ -157,15 +157,7 @@ footer li{margin-bottom:5px}
   <div class="grid two">
     <section class="card">
       <h2>Jahresverlauf im Vergleich</h2>
-      <p class="sub">Jedes Jahr als eigene Kurve über den Jahresverlauf — zeigt das saisonale Muster
-         (Winterfüllung, Sommerzehrung) und welche Jahre aus der Reihe fallen.</p>
-      <div class="f" style="margin-bottom:12px">
-        <label for="saisonDam">Talsperre für diesen Vergleich</label>
-        <select id="saisonDam">
-          <option value="Obernautalsperre">Obernautalsperre</option>
-          <option value="Breitenbachtalsperre">Breitenbachtalsperre</option>
-        </select>
-      </div>
+      <p class="sub">Jedes Jahr als eigene Kurve über den Jahresverlauf — zeigt das saisonale Muster (Winterfüllung, Sommerzehrung) und welche Jahre aus der Reihe fallen. Verwendet den allgemeinen Talsperrenfilter.</p>
       <div class="wrap sm"><canvas id="cSaison"></canvas></div>
     </section>
 
@@ -377,7 +369,7 @@ const state = {
   von: alleJahre[0], bis: alleJahre[alleJahre.length-1],
   dams: new Set(["Obernautalsperre","Breitenbachtalsperre"]),
   tones: new Set(["alarmierend","besorgt","neutral","beruhigend"]),
-  glatt: 0, saisonDam: "Obernautalsperre", trend: true
+  glatt: 0, trend: true
 };
 
 const selVon = document.getElementById("von"), selBis = document.getElementById("bis");
@@ -524,20 +516,22 @@ function korrWert(datum, dams, daten = DATEN) {
 }
 
 function zeichneSaison() {
-  const dam = state.saisonDam;
-  const proJahr = {};
-  DATEN.filter(r => r.t === dam && inRange(r.d)).forEach(r => {
-    const y = r.d.slice(0,4);
-    const tag = (new Date(r.d) - new Date(y + "-01-01")) / 864e5;
-    (proJahr[y] ||= []).push({x:tag, y:r.p});
-  });
-  const ys = Object.keys(proJahr).sort();
-  const ds = ys.map((y,i) => {
-    const hell = 25 + Math.round(55 * (i / Math.max(1, ys.length - 1)));
-    return {label:y, data:proJahr[y].sort((a,b) => a.x - b.x),
-      borderColor:`hsl(${dam === "Obernautalsperre" ? 210 : 165} 80% ${hell}%)`,
-      borderWidth:y === ys[ys.length-1] ? 3 : 1.6, pointRadius:0, tension:.3};
-  });
+  const ds = [];
+  for (const dam of state.dams) {
+    const proJahr = {};
+    DATEN.filter(r => r.t === dam && inRange(r.d)).forEach(r => {
+      const y = r.d.slice(0,4);
+      const tag = (new Date(r.d) - new Date(y + "-01-01")) / 864e5;
+      (proJahr[y] ||= []).push({x:tag, y:r.p});
+    });
+    const ys = Object.keys(proJahr).sort();
+    ys.forEach((y,i) => {
+      const hell = 25 + Math.round(55 * (i / Math.max(1, ys.length - 1)));
+      ds.push({label:`${y} · ${dam}`, data:proJahr[y].sort((a,b) => a.x - b.x),
+        borderColor:`hsl(${dam === "Obernautalsperre" ? 210 : 165} 80% ${hell}%)`,
+        borderWidth:y === ys[ys.length-1] ? 3 : 1.6, pointRadius:0, tension:.3});
+    });
+  }
   const monat = ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
   render("cSaison", "line", {datasets:ds}, {...basis,
     scales:{x:{type:"linear", min:0, max:365, grid:gitter,
@@ -730,8 +724,6 @@ selVon.onchange = () => { state.von = selVon.value;
   if (state.von > state.bis) { state.bis = state.von; selBis.value = state.bis; } alles(); };
 selBis.onchange = () => { state.bis = selBis.value;
   if (state.bis < state.von) { state.von = state.bis; selVon.value = state.von; } alles(); };
-document.getElementById("saisonDam").onchange = e => {
-  state.saisonDam = e.target.value; zeichneSaison(); };
 document.getElementById("glatt").oninput = e => {
   state.glatt = +e.target.value;
   document.getElementById("glattTxt").textContent =
