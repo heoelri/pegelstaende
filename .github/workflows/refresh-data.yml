@@ -1,0 +1,58 @@
+name: Refresh data
+
+on:
+  schedule:
+    - cron: "0 6 3 * *"   # monthly, after the BRA reports for the 1st
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pdfplumber
+
+      - name: Fetch BRA yearly table
+        run: |
+          y=$(date +%Y); [ "$(date +%-m)" -ge 11 ] && y=$((y + 1))
+          python scripts/talsperren_jahrestabelle.py "$y"
+          python scripts/build_daten.py
+
+      - name: Check
+        run: |
+          node tests/test_trend.js
+          python -m py_compile scripts/talsperren_all.py scripts/talsperren_jahrestabelle.py scripts/build_daten.py
+          grep -q Obernautalsperre daten.js && grep -q Breitenbachtalsperre daten.js
+
+      - name: PR body with newest date and recent WVS posts
+        run: |
+          {
+            echo "Automatischer Abruf der BRA-Jahrestabelle. Neuester Stichtag: \`$(tail -n1 data/fuellstaende_jahr.csv | cut -d';' -f1)\`."
+            echo
+            echo "Vor dem Merge manuell (siehe AGENTS.md):"
+            echo "- [ ] Neueste Zeilen gegen das verlinkte BRA-PDF prüfen"
+            echo "- [ ] Footer-Datum in \`index.html\` anpassen"
+            echo "- [ ] WVS-Veröffentlichungen prüfen und ggf. \`PRESSEWERTE\`, \`BERICHTE\`, \`EREIGNISSE\` ergänzen"
+            echo
+            echo "WVS-Beiträge der letzten 40 Tage:"
+            curl -fsS -A "Mozilla/5.0" "https://wvs.nrw/wp-json/wp/v2/posts?after=$(date -d '-40 days' +%Y-%m-%dT00:00:00)&per_page=20&_fields=date,link,title" \
+              | jq -r '.[] | "- \(.date[:10]) [\(.title.rendered)](\(.link))"' || echo "- (Abruf fehlgeschlagen)"
+          } > "$RUNNER_TEMP/body.md"
+
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: data-refresh
+          commit-message: Refresh BRA reservoir data
+          title: Daten-Update BRA Talsperrenfüllstände
+          body-path: ${{ runner.temp }}/body.md
+          add-paths: |
+            data/fuellstaende_jahr.csv
+            data/fuellstaende_jahr.json
+            daten.js

@@ -44,6 +44,8 @@ Aktuelle WVS-Pressewerte und neue Ereignisse werden nach Prüfung der bestmögli
 
 `python .\scripts\talsperren_all.py` ist nur nötig, wenn ältere BRA-Berichte ergänzt oder geändert wurden.
 
+Der Workflow `.github/workflows/refresh-data.yml` führt die beiden Skripte monatlich (am 3.) aus und öffnet bei neuen Messwerten einen Pull Request mit einer Prüfliste und den aktuellen WVS-Beiträgen. Pressewerte, Berichte, Ereignisse und das Footer-Datum werden vor dem Merge manuell gepflegt. Voraussetzung: unter Settings › Actions › General ist „Allow GitHub Actions to create and approve pull requests“ aktiviert.
+
 ## Grenzen
 
 Die Daten können Lücken, nachträgliche Änderungen oder Übertragungsfehler
