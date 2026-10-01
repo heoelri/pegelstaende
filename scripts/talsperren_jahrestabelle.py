@@ -115,7 +115,15 @@ def main(jahre):
                     zeilen.extend(tabelle_auswerten(tab, bj, url))
         print(f"  Betriebsjahr {bj}: {len(zeilen)} Messwerte kumuliert")
 
+    # Bestehende Werte behalten: frühere Betriebsjahre bzw. fehlgeschlagene Downloads
+    # dürfen keine bereits erfassten Messwerte löschen.
     einmalig = {}
+    if (DATA / "fuellstaende_jahr.csv").exists():
+        with open(DATA / "fuellstaende_jahr.csv", encoding="utf-8") as f:
+            for z in csv.DictReader(f, delimiter=";"):
+                z["fuellgrad_pct"] = float(z["fuellgrad_pct"])
+                z["inhalt_mio_m3"] = float(z["inhalt_mio_m3"])
+                einmalig[(z["datum"], z["talsperre"])] = z
     for z in zeilen:
         einmalig[(z["datum"], z["talsperre"])] = z
     zeilen = sorted(einmalig.values(), key=lambda z: (z["datum"], z["talsperre"]))
